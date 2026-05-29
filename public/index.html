@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tarnov — Menyu O'qitish Tizimi</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#C8922A;--gold-light:#F5EDD8;--dark:#1C1408;
+  --bg:#FAFAF8;--card:#FFFFFF;--border:#E8E4DC;
+  --text:#2D2A24;--muted:#8A8478;--danger:#C0392B;
+  --success:#27AE60;--info:#2E75B6;
+}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+
+/* NAV */
+.nav{background:var(--card);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:50;padding:0 1rem}
+.nav-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;gap:0}
+.nav-brand{font-size:16px;font-weight:700;color:var(--gold);letter-spacing:.08em;padding:14px 16px 14px 0;border-right:1px solid var(--border);margin-right:8px}
+.nav-tab{padding:16px 14px;font-size:13px;cursor:pointer;border:none;background:none;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .15s;white-space:nowrap}
+.nav-tab:hover{color:var(--text)}
+.nav-tab.active{color:var(--gold);border-bottom-color:var(--gold);font-weight:500}
+.nav-badge{background:var(--gold);color:#fff;font-size:10px;padding:1px 5px;border-radius:99px;margin-left:4px}
+
+.wrap{max-width:900px;margin:0 auto;padding:1.5rem 1rem}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:8px;font-size:13px;cursor:pointer;border:none;transition:all .15s;font-family:inherit}
+.btn-gold{background:var(--gold);color:#fff}
+.btn-gold:hover{background:#b07e24}
+.btn-outline{background:#fff;border:1px solid var(--border);color:var(--text)}
+.btn-outline:hover{background:var(--bg)}
+.btn-danger{background:#fff;border:1px solid #fcc;color:var(--danger)}
+.btn-danger:hover{background:#fff0f0}
+.btn-sm{padding:5px 10px;font-size:12px}
+
+/* CARDS */
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.card-body{padding:1rem 1.25rem}
+
+/* METRICS */
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:1.5rem}
+.metric{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem}
+.metric-label{font-size:11px;color:var(--muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:.05em}
+.metric-val{font-size:26px;font-weight:600;color:var(--text)}
+.metric-sub{font-size:11px;color:var(--muted);margin-top:2px}
+
+/* FOOD LIST */
+.food-item{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 14px;display:flex;align-items:center;gap:12px;margin-bottom:8px;transition:border-color .15s}
+.food-item:hover{border-color:var(--gold)}
+.food-thumb{width:52px;height:52px;border-radius:8px;object-fit:cover;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;overflow:hidden}
+.food-thumb img{width:100%;height:100%;object-fit:cover;border-radius:8px}
+.food-info{flex:1;min-width:0}
+.food-name{font-size:14px;font-weight:500;margin-bottom:2px}
+.food-meta{font-size:12px;color:var(--muted)}
+.food-price{font-size:14px;font-weight:600;color:var(--gold);white-space:nowrap}
+.food-actions{display:flex;gap:6px}
+.icon-btn{width:32px;height:32px;border-radius:8px;border:1px solid var(--border);background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--muted);font-size:16px;transition:all .15s}
+.icon-btn:hover{border-color:var(--gold);color:var(--gold)}
+.icon-btn.del:hover{border-color:#fcc;color:var(--danger);background:#fff0f0}
+
+.chip{display:inline-block;padding:2px 8px;border-radius:99px;font-size:11px;background:var(--gold-light);color:var(--gold);margin-right:4px}
+
+/* CAT FILTER */
+.cat-filter{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:1rem}
+.cat-btn{padding:5px 14px;border-radius:99px;font-size:12px;cursor:pointer;border:1px solid var(--border);background:#fff;color:var(--muted);transition:all .15s}
+.cat-btn.active{background:var(--gold);color:#fff;border-color:var(--gold)}
+
+/* MODAL */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:100;display:flex;align-items:center;justify-content:center;padding:1rem}
+.modal{background:#fff;border-radius:14px;width:100%;max-width:540px;max-height:92vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.2)}
+.modal-head{padding:1.25rem 1.5rem 1rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:#fff;z-index:2}
+.modal-title{font-size:15px;font-weight:600}
+.modal-body{padding:1.25rem 1.5rem}
+.modal-foot{padding:1rem 1.5rem;border-top:1px solid var(--border);display:flex;gap:8px;justify-content:flex-end;position:sticky;bottom:0;background:#fff}
+
+/* FORM */
+.fg{margin-bottom:1rem}
+.fl{font-size:12px;color:var(--muted);margin-bottom:5px;display:block;font-weight:500}
+.fi,.fs,.ft{width:100%;padding:8px 10px;font-size:13px;border:1px solid var(--border);border-radius:8px;background:#fff;color:var(--text);font-family:inherit;outline:none;transition:border-color .15s}
+.fi:focus,.fs:focus,.ft:focus{border-color:var(--gold)}
+.ft{min-height:72px;resize:vertical}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+
+/* IMG UPLOAD */
+.img-drop{border:2px dashed var(--border);border-radius:10px;padding:1.5rem;text-align:center;cursor:pointer;transition:all .15s}
+.img-drop:hover{border-color:var(--gold);background:var(--gold-light)}
+.img-drop.filled{border-style:solid;padding:0;overflow:hidden}
+.img-drop.filled img{width:100%;height:160px;object-fit:cover;display:block}
+.img-drop-text{font-size:12px;color:var(--muted);margin-top:8px}
+.img-drop-icon{font-size:28px;color:var(--muted)}
+.img-acts{display:flex;gap:6px;padding:8px;background:var(--bg);justify-content:center}
+
+/* QUESTIONS */
+.q-item{display:flex;align-items:center;gap:8px;background:var(--bg);border-radius:8px;padding:8px 10px;margin-bottom:6px}
+.q-num{width:22px;height:22px;border-radius:50%;background:var(--gold);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.q-text{flex:1;font-size:13px}
+
+/* MENU GRID */
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:10px;margin-bottom:1.5rem}
+.menu-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;transition:all .15s}
+.menu-card:hover{border-color:var(--gold);transform:translateY(-2px);box-shadow:0 4px 12px rgba(200,146,42,.15)}
+.mc-img{width:100%;height:105px;object-fit:cover;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:34px;overflow:hidden}
+.mc-img img{width:100%;height:100%;object-fit:cover}
+.mc-body{padding:10px}
+.mc-name{font-size:13px;font-weight:500;margin-bottom:2px}
+.mc-price{font-size:12px;color:var(--gold);font-weight:600}
+.mc-time{font-size:11px;color:var(--muted);margin-top:3px}
+
+/* DETAIL */
+.detail-img{width:100%;height:200px;object-fit:cover;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:60px;border-radius:12px;overflow:hidden;margin-bottom:1rem}
+.detail-img img{width:100%;height:100%;object-fit:cover;border-radius:12px}
+.detail-name{font-size:20px;font-weight:600;margin-bottom:4px}
+.detail-price{font-size:16px;color:var(--gold);font-weight:600;margin-bottom:1rem}
+.info-row{display:flex;gap:12px;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px}
+.info-row:last-child{border:none}
+.ik{color:var(--muted);min-width:110px;flex-shrink:0}
+.phrase-box{background:var(--gold-light);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 14px;font-size:13px;color:#7a5a1a;font-style:italic;margin-top:1rem}
+
+/* TEST */
+.test-prog-wrap{height:5px;background:var(--border);border-radius:99px;margin-bottom:1rem}
+.test-prog-bar{height:100%;background:var(--gold);border-radius:99px;transition:width .3s}
+.test-q{font-size:16px;font-weight:500;margin-bottom:1.25rem;line-height:1.5}
+.test-opt{display:block;width:100%;padding:11px 16px;border:1px solid var(--border);border-radius:10px;background:#fff;color:var(--text);font-size:13px;text-align:left;cursor:pointer;margin-bottom:8px;transition:all .15s;font-family:inherit}
+.test-opt:hover{border-color:var(--gold)}
+.test-opt.correct{background:#eafaf1;border-color:var(--success);color:#1a6b40}
+.test-opt.wrong{background:#fef0f0;border-color:#e74c3c;color:#922b21}
+.test-opt:disabled{cursor:default}
+
+/* RESULT */
+.result-wrap{text-align:center;padding:2rem 1rem}
+.result-score{font-size:52px;font-weight:700;color:var(--gold)}
+.result-label{font-size:14px;color:var(--muted);margin-top:4px}
+.result-rank{display:inline-block;padding:5px 20px;border-radius:99px;font-size:13px;font-weight:600;margin:12px auto}
+.result-stars{font-size:28px;margin:10px 0}
+
+/* LEADERBOARD */
+.lb-item{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:10px 14px;margin-bottom:8px}
+.lb-rank{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;flex-shrink:0}
+.lb-1{background:#FFF3CD;color:#856404}
+.lb-2{background:#F1F1F1;color:#555}
+.lb-3{background:#FDEBD0;color:#7D4A0F}
+.lb-n{background:var(--bg);color:var(--muted)}
+.lb-name{flex:1;font-size:13px;font-weight:500}
+.lb-pct{font-size:13px;font-weight:600;color:var(--gold)}
+.lb-bar{height:4px;background:var(--border);border-radius:99px;margin-top:3px}
+.lb-fill{height:100%;background:var(--gold);border-radius:99px}
+
+/* NAME MODAL */
+.name-wrap{text-align:center;padding:2rem 1.5rem}
+
+.hidden{display:none!important}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">TARNOV</div>
+    <button class="nav-tab active" onclick="gotoTab('admin')">⚙ Admin</button>
+    <button class="nav-tab" onclick="gotoTab('learn')">📖 O'rganish</button>
+    <button class="nav-tab" onclick="gotoTab('test')">✏ Test <span class="nav-badge" id="q-count">0</span></button>
+    <button class="nav-tab" onclick="gotoTab('rank')">🏆 Reyting</button>
+  </div>
+</nav>
+
+<!-- ═══ ADMIN ═══ -->
+<div id="tab-admin" class="wrap">
+  <div class="metrics">
+    <div class="metric"><div class="metric-label">Taomlar</div><div class="metric-val" id="m-foods">0</div><div class="metric-sub">Menyuda</div></div>
+    <div class="metric"><div class="metric-label">Savollar</div><div class="metric-val" id="m-qs">0</div><div class="metric-sub">Testda</div></div>
+    <div class="metric"><div class="metric-label">Kategoriyalar</div><div class="metric-val" id="m-cats">0</div><div class="metric-sub">Bo'lim</div></div>
+  </div>
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+    <div style="font-size:14px;font-weight:500">Taomlar ro'yxati</div>
+    <button class="btn btn-gold" onclick="openAdd()">＋ Taom qo'shish</button>
+  </div>
+  <div class="cat-filter" id="a-cats"></div>
+  <div id="food-list"></div>
+</div>
+
+<!-- ═══ LEARN ═══ -->
+<div id="tab-learn" class="wrap hidden">
+  <div class="cat-filter" id="l-cats"></div>
+  <div id="learn-grid"></div>
+  <div id="learn-detail" class="hidden"></div>
+</div>
+
+<!-- ═══ TEST ═══ -->
+<div id="tab-test" class="wrap hidden">
+  <div id="t-start">
+    <div style="text-align:center;padding:3rem 1rem">
+      <div style="font-size:48px;margin-bottom:12px">📝</div>
+      <div style="font-size:20px;font-weight:600;margin-bottom:8px">Menyu testi</div>
+      <div style="font-size:14px;color:var(--muted);margin-bottom:1.5rem">Barcha taomlar bo'yicha bilimingizni sinab ko'ring</div>
+      <button class="btn btn-gold" onclick="startTest()">▶ Testni boshlash</button>
+    </div>
+  </div>
+  <div id="t-active" class="hidden">
+    <div class="test-prog-wrap"><div class="test-prog-bar" id="tpb"></div></div>
+    <div style="font-size:12px;color:var(--muted);margin-bottom:10px" id="t-counter"></div>
+    <div class="test-q" id="t-q"></div>
+    <div id="t-opts"></div>
+  </div>
+  <div id="t-result" class="hidden"></div>
+</div>
+
+<!-- ═══ RANK ═══ -->
+<div id="tab-rank" class="wrap hidden">
+  <div style="font-size:14px;font-weight:500;margin-bottom:12px">Ofitsiantlar reytingi</div>
+  <div id="lb-list"></div>
+</div>
+
+<!-- ═══ ADD/EDIT MODAL ═══ -->
+<div id="modal" class="overlay hidden" onclick="bgClose(event)">
+  <div class="modal">
+    <div class="modal-head">
+      <div class="modal-title" id="m-title">Yangi taom</div>
+      <button class="icon-btn" onclick="closeModal()" style="border:none;font-size:20px">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="fg">
+        <label class="fl">Rasm</label>
+        <div class="img-drop" id="img-drop" onclick="pickImg()">
+          <div id="img-ph"><div class="img-drop-icon">📷</div><div class="img-drop-text">Bosib rasm tanlang<br><span style="font-size:11px">JPG, PNG — max 2MB</span></div></div>
+          <img id="img-prev" style="display:none;width:100%;height:160px;object-fit:cover">
+          <div id="img-acts" class="img-acts hidden">
+            <button class="btn btn-outline btn-sm" onclick="pickImg2(event)">🔄 O'zgartirish</button>
+            <button class="btn btn-danger btn-sm" onclick="delImg(event)">🗑 O'chirish</button>
+          </div>
+        </div>
+        <input type="file" id="img-file" accept="image/*" class="hidden" onchange="onImg(event)">
+      </div>
+      <div class="frow">
+        <div class="fg"><label class="fl">Taom nomi *</label><input class="fi" id="f-name" placeholder="Toshkent oshi"></div>
+        <div class="fg"><label class="fl">Kategoriya</label>
+          <select class="fs" id="f-cat">
+            <option>Sho'rvalar</option><option>Asosiy taomlar</option><option>Salatlar</option>
+            <option>Shirinliklar</option><option>Ichimliklar</option><option>Nonlar</option><option>Boshqa</option>
+          </select>
+        </div>
+      </div>
+      <div class="frow">
+        <div class="fg"><label class="fl">Narxi (so'm)</label><input class="fi" id="f-price" type="number" placeholder="45000"></div>
+        <div class="fg"><label class="fl">Porsiya</label><input class="fi" id="f-portion" placeholder="350 gr"></div>
+      </div>
+      <div class="frow">
+        <div class="fg"><label class="fl">Tayyorlanish vaqti</label><input class="fi" id="f-time" placeholder="25-30 daqiqa"></div>
+        <div class="fg"><label class="fl">Emoji (rasm yo'q bo'lsa)</label><input class="fi" id="f-emoji" placeholder="🍛" maxlength="2"></div>
+      </div>
+      <div class="fg"><label class="fl">Tarkibi</label><textarea class="ft" id="f-ingr" placeholder="Guruch, sabzi, go'sht..."></textarea></div>
+      <div class="fg"><label class="fl">Allergenlar</label><input class="fi" id="f-allergy" placeholder="Yong'oq yo'q, glutensiz..."></div>
+      <div class="fg"><label class="fl">Mos ichimliklar</label><input class="fi" id="f-drink" placeholder="Ko'k choy, ayron"></div>
+      <div class="fg"><label class="fl">Tavsiya iborasi (ofitsiant uchun)</label><textarea class="ft" id="f-phrase" placeholder="Mehmonlarga tavsiya qilish uchun jumlangiz..."></textarea></div>
+      <div class="fg">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+          <label class="fl" style="margin:0">Test savollari</label>
+          <span style="font-size:11px;color:var(--muted)">Birinchisi — to'g'ri javob</span>
+        </div>
+        <div id="q-list-modal"></div>
+        <div style="display:flex;gap:8px;margin-top:6px">
+          <input class="fi" id="q-inp" placeholder="Savol qo'shing..." style="flex:1">
+          <button class="btn btn-outline" onclick="addQ()">＋</button>
+        </div>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-outline" onclick="closeModal()">Bekor</button>
+      <button class="btn btn-gold" onclick="saveFood()">✓ Saqlash</button>
+    </div>
+  </div>
+</div>
+
+<!-- NAME MODAL -->
+<div id="name-modal" class="overlay hidden">
+  <div class="modal" style="max-width:360px">
+    <div class="modal-head"><div class="modal-title">Ismingizni kiriting</div></div>
+    <div class="name-wrap">
+      <div style="font-size:14px;color:var(--muted);margin-bottom:1rem">Natijangiz reytingga qo'shiladi</div>
+      <input class="fi" id="officer-name" placeholder="Masalan: Dilnoza S." style="margin-bottom:1rem">
+      <button class="btn btn-gold" style="width:100%" onclick="submitName()">Davom etish ▶</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const API = '';
+let foods = [];
+let qs = [];
+let tIdx = 0, tScore = 0;
+let editId = null;
+let curImg = null;
+let removeImg = false;
+let tempQs = [];
+let aCat = 'Barchasi';
+let lCat = 'Barchasi';
+let officerName = localStorage.getItem('tarnov_name') || '';
+
+async function fetchFoods() {
+  const r = await fetch(API + '/api/foods');
+  foods = await r.json();
+  updateStats();
+}
+
+function updateStats() {
+  document.getElementById('m-foods').textContent = foods.length;
+  const totalQ = foods.reduce((s,f) => s + (f.questions||[]).length, 0);
+  document.getElementById('m-qs').textContent = totalQ;
+  document.getElementById('q-count').textContent = totalQ;
+  const cats = [...new Set(foods.map(f=>f.cat))];
+  document.getElementById('m-cats').textContent = cats.length;
+}
+
+function cats() { return [...new Set(foods.map(f=>f.cat))]; }
+
+function gotoTab(name) {
+  ['admin','learn','test','rank'].forEach(t => {
+    document.getElementById('tab-'+t).classList.add('hidden');
+  });
+  document.querySelectorAll('.nav-tab').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.remove('hidden');
+  document.querySelectorAll('.nav-tab')[['admin','learn','test','rank'].indexOf(name)].classList.add('active');
+  if(name==='admin') renderAdmin();
+  if(name==='learn') renderLearn();
+  if(name==='rank') renderRank();
+}
+
+// ═══ ADMIN ═══
+function renderAdmin() {
+  updateStats();
+  const allCats = ['Barchasi',...cats()];
+  document.getElementById('a-cats').innerHTML = allCats.map(c =>
+    `<button class="cat-btn${c===aCat?' active':''}" onclick="setACat('${c}')">${c}</button>`
+  ).join('');
+  const list = aCat==='Barchasi' ? foods : foods.filter(f=>f.cat===aCat);
+  document.getElementById('food-list').innerHTML = list.map(f => `
+    <div class="food-item">
+      <div class="food-thumb">${f.img?`<img src="${f.img}" alt="${f.name}">`:`<span>${f.emoji||'🍽'}</span>`}</div>
+      <div class="food-info">
+        <div class="food-name">${f.name}</div>
+        <div class="food-meta"><span class="chip">${f.cat}</span>${f.time} · ${f.portion}</div>
+        <div class="food-meta">${(f.questions||[]).length} ta savol</div>
+      </div>
+      <div class="food-price">${Number(f.price).toLocaleString()} so'm</div>
+      <div class="food-actions">
+        <button class="icon-btn" onclick="editFood('${f.id}')" title="Tahrirlash">✏</button>
+        <button class="icon-btn del" onclick="delFood('${f.id}')" title="O'chirish">🗑</button>
+      </div>
+    </div>`).join('');
+}
+function setACat(c){ aCat=c; renderAdmin(); }
+
+// ═══ MODAL ═══
+function openAdd() {
+  editId = null; curImg = null; removeImg = false; tempQs = [];
+  document.getElementById('m-title').textContent = 'Yangi taom qo\'shish';
+  ['f-name','f-price','f-portion','f-time','f-emoji','f-ingr','f-allergy','f-drink','f-phrase'].forEach(id => document.getElementById(id).value = '');
+  document.getElementById('f-cat').value = "Sho'rvalar";
+  resetImgUI(); renderQModal();
+  document.getElementById('modal').classList.remove('hidden');
+}
+function editFood(id) {
+  const f = foods.find(x=>x.id===id);
+  if(!f) return;
+  editId = id; curImg = null; removeImg = false; tempQs = [...(f.questions||[])];
+  document.getElementById('m-title').textContent = 'Taomni tahrirlash';
+  document.getElementById('f-name').value = f.name;
+  document.getElementById('f-cat').value = f.cat;
+  document.getElementById('f-price').value = f.price;
+  document.getElementById('f-portion').value = f.portion||'';
+  document.getElementById('f-time').value = f.time||'';
+  document.getElementById('f-emoji').value = f.emoji||'';
+  document.getElementById('f-ingr').value = f.ingredients||'';
+  document.getElementById('f-allergy').value = f.allergens||'';
+  document.getElementById('f-drink').value = f.drinks||'';
+  document.getElementById('f-phrase').value = f.phrase||'';
+  if(f.img) {
+    document.getElementById('img-prev').src = f.img;
+    document.getElementById('img-prev').style.display='block';
+    document.getElementById('img-ph').style.display='none';
+    document.getElementById('img-acts').classList.remove('hidden');
+    document.getElementById('img-drop').classList.add('filled');
+  } else { resetImgUI(); }
+  renderQModal();
+  document.getElementById('modal').classList.remove('hidden');
+}
+async function delFood(id) {
+  if(!confirm('Bu taomni o\'chirasizmi?')) return;
+  await fetch(API+'/api/foods/'+id, {method:'DELETE'});
+  await fetchFoods(); renderAdmin();
+}
+function closeModal() { document.getElementById('modal').classList.add('hidden'); }
+function bgClose(e) { if(e.target===document.getElementById('modal')) closeModal(); }
+
+function pickImg() { if(!document.getElementById('img-drop').classList.contains('filled')) document.getElementById('img-file').click(); }
+function pickImg2(e) { e.stopPropagation(); document.getElementById('img-file').click(); }
+function delImg(e) {
+  e.stopPropagation(); curImg = null; removeImg = true; resetImgUI();
+}
+function resetImgUI() {
+  document.getElementById('img-prev').style.display='none';
+  document.getElementById('img-ph').style.display='block';
+  document.getElementById('img-acts').classList.add('hidden');
+  document.getElementById('img-drop').classList.remove('filled');
+  document.getElementById('img-file').value='';
+}
+function onImg(e) {
+  const file = e.target.files[0];
+  if(!file) return;
+  if(file.size > 2*1024*1024) { alert('Rasm 2MB dan katta'); return; }
+  curImg = file;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    document.getElementById('img-prev').src = ev.target.result;
+    document.getElementById('img-prev').style.display='block';
+    document.getElementById('img-ph').style.display='none';
+    document.getElementById('img-acts').classList.remove('hidden');
+    document.getElementById('img-drop').classList.add('filled');
+  };
+  reader.readAsDataURL(file);
+}
+function renderQModal() {
+  document.getElementById('q-list-modal').innerHTML = tempQs.map((q,i)=>`
+    <div class="q-item">
+      <div class="q-num">${i+1}</div>
+      <div class="q-text">${q}</div>
+      <button class="icon-btn del btn-sm" onclick="removeQ(${i})" style="border:none;font-size:16px">×</button>
+    </div>`).join('');
+}
+function addQ() {
+  const v = document.getElementById('q-inp').value.trim();
+  if(!v) return;
+  tempQs.push(v); document.getElementById('q-inp').value=''; renderQModal();
+}
+function removeQ(i) { tempQs.splice(i,1); renderQModal(); }
+
+async function saveFood() {
+  const name = document.getElementById('f-name').value.trim();
+  if(!name) { alert('Taom nomini kiriting'); return; }
+  const fd = new FormData();
+  fd.append('name', name);
+  fd.append('cat', document.getElementById('f-cat').value);
+  fd.append('price', document.getElementById('f-price').value||'0');
+  fd.append('portion', document.getElementById('f-portion').value);
+  fd.append('time', document.getElementById('f-time').value);
+  fd.append('emoji', document.getElementById('f-emoji').value||'🍽');
+  fd.append('ingredients', document.getElementById('f-ingr').value);
+  fd.append('allergens', document.getElementById('f-allergy').value);
+  fd.append('drinks', document.getElementById('f-drink').value);
+  fd.append('phrase', document.getElementById('f-phrase').value);
+  fd.append('questions', JSON.stringify(tempQs));
+  if(curImg) fd.append('img', curImg);
+  if(removeImg) fd.append('removeImg','true');
+
+  const url = editId ? API+'/api/foods/'+editId : API+'/api/foods';
+  const method = editId ? 'PUT' : 'POST';
+  const r = await fetch(url, {method, body: fd});
+  const d = await r.json();
+  if(d.error) { alert('Xato: '+d.error); return; }
+  closeModal(); await fetchFoods(); renderAdmin();
+}
+
+// ═══ LEARN ═══
+function renderLearn() {
+  const allCats = ['Barchasi',...cats()];
+  document.getElementById('l-cats').innerHTML = allCats.map(c =>
+    `<button class="cat-btn${c===lCat?' active':''}" onclick="setLCat('${c}')">${c}</button>`
+  ).join('');
+  renderMenuGrid();
+  document.getElementById('learn-grid').classList.remove('hidden');
+  document.getElementById('learn-detail').classList.add('hidden');
+}
+function setLCat(c) { lCat=c; document.querySelectorAll('#l-cats .cat-btn').forEach(b=>b.classList.remove('active')); event.target.classList.add('active'); renderMenuGrid(); }
+function renderMenuGrid() {
+  const filtered = lCat==='Barchasi' ? foods : foods.filter(f=>f.cat===lCat);
+  document.getElementById('learn-grid').innerHTML = `<div class="menu-grid">${filtered.map(f=>`
+    <div class="menu-card" onclick="showDetail('${f.id}')">
+      <div class="mc-img">${f.img?`<img src="${f.img}" alt="${f.name}">`:`<span>${f.emoji||'🍽'}</span>`}</div>
+      <div class="mc-body">
+        <div class="mc-name">${f.name}</div>
+        <div class="mc-price">${Number(f.price).toLocaleString()} so'm</div>
+        <div class="mc-time">⏱ ${f.time}</div>
+      </div>
+    </div>`).join('')}</div>`;
+}
+function showDetail(id) {
+  const f = foods.find(x=>x.id===id);
+  if(!f) return;
+  document.getElementById('learn-grid').classList.add('hidden');
+  const dp = document.getElementById('learn-detail');
+  dp.innerHTML = `
+    <button class="btn btn-outline" style="margin-bottom:12px" onclick="backGrid()">← Orqaga</button>
+    <div class="card"><div class="card-body">
+      <div class="detail-img">${f.img?`<img src="${f.img}" alt="${f.name}">`:`<span>${f.emoji||'🍽'}</span>`}</div>
+      <div class="detail-name">${f.name}</div>
+      <div class="detail-price">${Number(f.price).toLocaleString()} so'm</div>
+      <div class="info-row"><span class="ik">📋 Tarkibi</span><span>${f.ingredients||'—'}</span></div>
+      <div class="info-row"><span class="ik">⚠ Allergenlar</span><span>${f.allergens||'Yo\'q'}</span></div>
+      <div class="info-row"><span class="ik">⏱ Vaqt</span><span>${f.time||'—'}</span></div>
+      <div class="info-row"><span class="ik">⚖ Porsiya</span><span>${f.portion||'—'}</span></div>
+      <div class="info-row"><span class="ik">🍵 Ichimlik</span><span>${f.drinks||'—'}</span></div>
+      ${f.phrase?`<div class="phrase-box">💬 "${f.phrase}"</div>`:''}
+    </div></div>`;
+  dp.classList.remove('hidden');
+}
+function backGrid() {
+  document.getElementById('learn-grid').classList.remove('hidden');
+  document.getElementById('learn-detail').classList.add('hidden');
+}
+
+// ═══ TEST ═══
+function buildQs() {
+  const all = [];
+  foods.forEach(f => {
+    (f.questions||[]).forEach((q,qi) => {
+      const wrongs = foods.filter(x=>x.id!==f.id).map(x=>x.name).sort(()=>Math.random()-.5).slice(0,3);
+      const opts = [f.name,...wrongs].sort(()=>Math.random()-.5);
+      all.push({ q, correct: f.name, opts });
+    });
+  });
+  return all.sort(()=>Math.random()-.5).slice(0,Math.min(10,all.length));
+}
+function startTest() {
+  if(!officerName) { document.getElementById('name-modal').classList.remove('hidden'); return; }
+  qs = buildQs();
+  if(qs.length===0) { alert("Avval taomlar va savollar qo'shing!"); return; }
+  tIdx=0; tScore=0;
+  document.getElementById('t-start').classList.add('hidden');
+  document.getElementById('t-result').classList.add('hidden');
+  document.getElementById('t-active').classList.remove('hidden');
+  showQ();
+}
+function submitName() {
+  const n = document.getElementById('officer-name').value.trim();
+  if(!n) { alert('Ism kiriting'); return; }
+  officerName = n; localStorage.setItem('tarnov_name', n);
+  document.getElementById('name-modal').classList.add('hidden');
+  startTest();
+}
+function showQ() {
+  if(tIdx>=qs.length) { showResult(); return; }
+  const q = qs[tIdx];
+  const pct = Math.round((tIdx/qs.length)*100);
+  document.getElementById('tpb').style.width = pct+'%';
+  document.getElementById('t-counter').textContent = (tIdx+1)+' / '+qs.length;
+  document.getElementById('t-q').textContent = q.q;
+  document.getElementById('t-opts').innerHTML = q.opts.map(o =>
+    `<button class="test-opt" onclick="answer(this,'${o.replace(/'/g,"\\'")}','${q.correct.replace(/'/g,"\\'")}')"> ${o}</button>`
+  ).join('');
+}
+function answer(btn, ans, correct) {
+  document.querySelectorAll('.test-opt').forEach(b=>b.disabled=true);
+  if(ans===correct){ btn.classList.add('correct'); tScore++; }
+  else {
+    btn.classList.add('wrong');
+    document.querySelectorAll('.test-opt').forEach(b=>{ if(b.textContent.trim()===correct) b.classList.add('correct'); });
+  }
+  setTimeout(()=>{ tIdx++; showQ(); }, 800);
+}
+async function showResult() {
+  document.getElementById('t-active').classList.add('hidden');
+  const pct = Math.round((tScore/qs.length)*100);
+  let rank, rbg, rc;
+  if(pct>=90){rank='🥇 Menyu Eksperti';rbg='#FFF3CD';rc='#856404';}
+  else if(pct>=70){rank='🥈 Senior Ofitsiant';rbg='#F0F0F0';rc='#555';}
+  else{rank='🥉 Junior Ofitsiant';rbg='#FDEBD0';rc='#7D4A0F';}
+  const stars = pct>=90?'★★★':pct>=70?'★★☆':'★☆☆';
+  document.getElementById('t-result').innerHTML = `
+    <div class="result-wrap">
+      <div class="result-score">${tScore}/${qs.length}</div>
+      <div class="result-label">to'g'ri javob · ${pct}%</div>
+      <div class="result-stars">${stars}</div>
+      <div class="result-rank" style="background:${rbg};color:${rc}">${rank}</div>
+      <div style="margin-top:1.5rem;display:flex;gap:8px;justify-content:center">
+        <button class="btn btn-gold" onclick="startTest()">↺ Qaytadan</button>
+        <button class="btn btn-outline" onclick="gotoTab('rank')">🏆 Reyting</button>
+      </div>
+    </div>`;
+  document.getElementById('t-result').classList.remove('hidden');
+  await fetch(API+'/api/leaderboard', {
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({ name: officerName, score: pct })
+  });
+}
+
+// ═══ RANK ═══
+async function renderRank() {
+  const r = await fetch(API+'/api/leaderboard');
+  const lb = await r.json();
+  const rankCls = ['lb-1','lb-2','lb-3'];
+  document.getElementById('lb-list').innerHTML = lb.map((p,i)=>`
+    <div class="lb-item">
+      <div class="lb-rank ${rankCls[i]||'lb-n'}">${i+1}</div>
+      <div style="flex:1">
+        <div class="lb-name">${p.name}</div>
+        <div class="lb-bar"><div class="lb-fill" style="width:${p.score}%"></div></div>
+      </div>
+      <div>
+        <div class="lb-pct">${p.score}%</div>
+        <div style="font-size:11px;color:var(--muted);text-align:right">${p.tests} test</div>
+      </div>
+    </div>`).join('');
+}
+
+// INIT
+fetchFoods().then(()=>renderAdmin());
+</script>
+</body>
+</html>
