@@ -3,80 +3,74 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Tarnov Platform</title>
+<title>Tarnov — Menyu Tizimi</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
   --gold:#C8922A;--gold2:#F5EDD8;--dark:#1C1408;
   --bg:#F7F5F0;--card:#FFF;--border:#E5E0D5;
   --text:#2D2A24;--muted:#8A8478;
-  --green:#27AE60;--red:#E74C3C;--blue:#2980B9;--purple:#8E44AD;
+  --green:#27AE60;--red:#E74C3C;--blue:#2980B9;
+  --easy:#27AE60;--medium:#F39C12;--hard:#E74C3C;
 }
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
 
-/* ── LOGIN ── */
+/* LOGIN */
 .login-page{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:1rem;background:var(--dark)}
-.login-box{background:#fff;border-radius:16px;padding:2rem;width:100%;max-width:400px}
-.login-logo{font-size:28px;font-weight:800;color:var(--gold);letter-spacing:.1em;text-align:center;margin-bottom:4px}
-.login-sub{font-size:12px;color:var(--muted);text-align:center;margin-bottom:1.5rem}
+.login-box{background:#fff;border-radius:16px;padding:2.5rem;width:100%;max-width:380px;text-align:center}
+.login-logo{font-size:32px;font-weight:800;color:var(--gold);letter-spacing:.1em;margin-bottom:4px}
+.login-sub{font-size:13px;color:var(--muted);margin-bottom:2rem}
 .login-tabs{display:flex;border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:1.5rem}
-.ltab{flex:1;padding:8px;font-size:13px;cursor:pointer;border:none;background:#fff;color:var(--muted);transition:all .15s}
-.ltab.active{background:var(--gold);color:#fff;font-weight:500}
-.pin-wrap{display:flex;gap:8px;justify-content:center;margin:1rem 0}
-.pin-box{width:52px;height:56px;border:1.5px solid var(--border);border-radius:10px;font-size:24px;font-weight:700;text-align:center;background:#fff;color:var(--text);outline:none;transition:border-color .15s}
+.login-tab{flex:1;padding:9px;font-size:13px;cursor:pointer;border:none;background:#fff;color:var(--muted);transition:all .15s}
+.login-tab.active{background:var(--gold);color:#fff;font-weight:500}
+.pin-inputs{display:flex;gap:8px;justify-content:center;margin:1rem 0}
+.pin-box{width:52px;height:56px;border:1.5px solid var(--border);border-radius:10px;font-size:24px;font-weight:700;text-align:center;color:var(--text);background:#fff;outline:none;transition:border-color .15s}
 .pin-box:focus{border-color:var(--gold)}
-.rest-select{width:100%;padding:10px;border:1px solid var(--border);border-radius:8px;font-size:13px;margin-bottom:1rem;background:#fff;color:var(--text)}
 
-/* ── NAV ── */
+/* NAV */
 .nav{background:var(--dark);position:sticky;top:0;z-index:50}
-.nav-inner{max-width:1100px;margin:0 auto;padding:0 1rem;display:flex;align-items:center;gap:0;overflow-x:auto}
-.nav-brand{font-size:15px;font-weight:800;color:var(--gold);letter-spacing:.1em;padding:14px 14px 14px 0;border-right:1px solid #333;margin-right:8px;white-space:nowrap}
-.nav-rest{font-size:11px;color:#888;padding:0 10px 0 0;border-right:1px solid #333;margin-right:8px;white-space:nowrap}
-.ntab{padding:15px 12px;font-size:12px;cursor:pointer;border:none;background:none;color:#aaa;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .15s;white-space:nowrap}
-.ntab:hover{color:#fff}
-.ntab.active{color:var(--gold);border-bottom-color:var(--gold);font-weight:500}
-.nbadge{background:var(--gold);color:#fff;font-size:10px;padding:1px 5px;border-radius:99px;margin-left:3px}
-.nav-right{margin-left:auto;display:flex;align-items:center;gap:8px;flex-shrink:0}
-.nav-user{font-size:11px;color:#888;white-space:nowrap}
-.nav-role{font-size:10px;padding:2px 6px;border-radius:99px;margin-left:4px}
-.role-super{background:#8E44AD;color:#fff}
-.role-admin{background:var(--gold);color:#fff}
-.role-officer{background:#27AE60;color:#fff}
+.nav-inner{max-width:960px;margin:0 auto;padding:0 1rem;display:flex;align-items:center}
+.nav-brand{font-size:16px;font-weight:800;color:var(--gold);letter-spacing:.1em;padding:14px 16px 14px 0;border-right:1px solid #333;margin-right:8px}
+.nav-tab{padding:16px 14px;font-size:13px;cursor:pointer;border:none;background:none;color:#aaa;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .15s;white-space:nowrap}
+.nav-tab:hover{color:#fff}
+.nav-tab.active{color:var(--gold);border-bottom-color:var(--gold);font-weight:500}
+.nav-badge{background:var(--gold);color:#fff;font-size:10px;padding:1px 5px;border-radius:99px;margin-left:4px}
+.nav-right{margin-left:auto;display:flex;align-items:center;gap:8px}
+.nav-user{font-size:12px;color:#aaa}
 
-/* ── WRAP ── */
-.wrap{max-width:1100px;margin:0 auto;padding:1.5rem 1rem}
+/* WRAP */
+.wrap{max-width:960px;margin:0 auto;padding:1.5rem 1rem}
 
-/* ── BUTTONS ── */
-.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:8px;font-size:13px;cursor:pointer;border:none;transition:all .15s;font-family:inherit;font-weight:500}
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:8px;font-size:13px;cursor:pointer;border:none;transition:all .15s;font-family:inherit;font-weight:500}
 .btn-gold{background:var(--gold);color:#fff}.btn-gold:hover{background:#b07e24}
 .btn-outline{background:#fff;border:1px solid var(--border);color:var(--text)}.btn-outline:hover{background:var(--bg)}
 .btn-red{background:#fff;border:1px solid #fcc;color:var(--red)}.btn-red:hover{background:#fff0f0}
-.btn-green{background:var(--green);color:#fff}
-.btn-purple{background:var(--purple);color:#fff}
+.btn-green{background:var(--green);color:#fff}.btn-green:hover{background:#1e8449}
 .btn-sm{padding:5px 10px;font-size:12px}
 .btn-full{width:100%;justify-content:center;padding:11px}
 
-/* ── METRICS ── */
+/* METRICS */
 .metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:1.5rem}
 .metric{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1rem}
-.metric-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px}
-.metric-val{font-size:24px;font-weight:700}
+.metric-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
+.metric-val{font-size:26px;font-weight:700}
 .metric-sub{font-size:11px;color:var(--muted);margin-top:2px}
 
-/* ── CARD ── */
+/* CARD */
 .card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden}
 .card-head{padding:1rem 1.25rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
 .card-title{font-size:14px;font-weight:600}
 .card-body{padding:1.25rem}
 
-/* ── TABLE ── */
+/* TABLE */
 .tbl{width:100%;border-collapse:collapse}
 .tbl th{font-size:11px;color:var(--muted);text-transform:uppercase;padding:8px 12px;text-align:left;border-bottom:1px solid var(--border)}
 .tbl td{padding:10px 12px;font-size:13px;border-bottom:1px solid var(--border)}
 .tbl tr:last-child td{border:none}
 .tbl tr:hover td{background:var(--bg)}
 
-/* ── FORM ── */
+/* FORM */
 .fg{margin-bottom:1rem}
 .fl{font-size:12px;color:var(--muted);margin-bottom:5px;display:block;font-weight:500}
 .fi,.fs,.ft{width:100%;padding:8px 10px;font-size:13px;border:1px solid var(--border);border-radius:8px;background:#fff;color:var(--text);font-family:inherit;outline:none;transition:border-color .15s}
@@ -84,7 +78,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .ft{min-height:72px;resize:vertical}
 .frow{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 
-/* ── FOOD ITEM ── */
+/* FOOD LIST */
 .food-item{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 14px;display:flex;align-items:center;gap:12px;margin-bottom:8px;transition:border-color .15s}
 .food-item:hover{border-color:var(--gold)}
 .food-thumb{width:52px;height:52px;border-radius:8px;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;overflow:hidden}
@@ -98,23 +92,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .icon-btn:hover{border-color:var(--gold);color:var(--gold)}
 .icon-btn.del:hover{border-color:#fcc;color:var(--red);background:#fff0f0}
 
-/* ── CHIPS ── */
-.chip{display:inline-block;padding:2px 8px;border-radius:99px;font-size:11px;margin-right:3px}
+.chip{display:inline-block;padding:2px 8px;border-radius:99px;font-size:11px;margin-right:4px}
 .chip-cat{background:var(--gold2);color:var(--gold)}
-.chip-easy{background:#e8f8f0;color:#1a6b40}
+.chip-easy{background:#e8f8f0;color:var(--easy)}
 .chip-medium{background:#fef9e7;color:#b7770d}
 .chip-hard{background:#fef0f0;color:var(--red)}
-.chip-pro{background:#EBF3FB;color:#1a5276}
-.chip-starter{background:#F4ECF7;color:#6c3483}
-.chip-active{background:#e8f8f0;color:#1a6b40}
-.chip-inactive{background:#fef0f0;color:var(--red)}
 
-/* ── CAT FILTER ── */
-.cat-filter{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:1rem}
-.cat-btn{padding:5px 14px;border-radius:99px;font-size:12px;cursor:pointer;border:1px solid var(--border);background:#fff;color:var(--muted);transition:all .15s}
-.cat-btn.active{background:var(--gold);color:#fff;border-color:var(--gold)}
-
-/* ── MODAL ── */
+/* MODAL */
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:200;display:flex;align-items:center;justify-content:center;padding:1rem}
 .modal{background:#fff;border-radius:14px;width:100%;max-width:560px;max-height:92vh;overflow-y:auto}
 .modal-head{padding:1.25rem 1.5rem 1rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:#fff;z-index:2}
@@ -122,18 +106,24 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .modal-body{padding:1.25rem 1.5rem}
 .modal-foot{padding:1rem 1.5rem;border-top:1px solid var(--border);display:flex;gap:8px;justify-content:flex-end;position:sticky;bottom:0;background:#fff}
 
-/* ── IMG UPLOAD ── */
+/* IMG UPLOAD */
 .img-drop{border:2px dashed var(--border);border-radius:10px;padding:1.5rem;text-align:center;cursor:pointer;transition:all .15s}
 .img-drop:hover{border-color:var(--gold);background:var(--gold2)}
 .img-drop.filled{border-style:solid;padding:0;overflow:hidden}
 .img-drop.filled img{width:100%;height:150px;object-fit:cover;display:block}
 .img-acts{display:flex;gap:6px;padding:8px;background:var(--bg);justify-content:center}
 
-/* ── Q LIST ── */
+/* Q LIST */
 .q-item{display:flex;align-items:center;gap:8px;background:var(--bg);border-radius:8px;padding:8px 10px;margin-bottom:6px}
 .q-num{width:22px;height:22px;border-radius:50%;background:var(--gold);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:700}
+.q-text{flex:1;font-size:13px}
 
-/* ── MENU GRID ── */
+/* CAT FILTER */
+.cat-filter{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:1rem}
+.cat-btn{padding:5px 14px;border-radius:99px;font-size:12px;cursor:pointer;border:1px solid var(--border);background:#fff;color:var(--muted);transition:all .15s}
+.cat-btn.active{background:var(--gold);color:#fff;border-color:var(--gold)}
+
+/* MENU GRID */
 .menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:10px;margin-bottom:1.5rem}
 .mc{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;transition:all .15s}
 .mc:hover{border-color:var(--gold);transform:translateY(-2px);box-shadow:0 4px 16px rgba(200,146,42,.15)}
@@ -144,7 +134,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .mc-price{font-size:12px;color:var(--gold);font-weight:600}
 .mc-time{font-size:11px;color:var(--muted);margin-top:3px}
 
-/* ── DETAIL ── */
+/* DETAIL */
 .detail-img{width:100%;height:200px;border-radius:12px;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:60px;overflow:hidden;margin-bottom:1rem}
 .detail-img img{width:100%;height:100%;object-fit:cover;border-radius:12px}
 .info-row{display:flex;gap:12px;padding:9px 0;border-bottom:1px solid var(--border);font-size:13px}
@@ -152,167 +142,142 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .ik{color:var(--muted);min-width:110px;flex-shrink:0}
 .phrase-box{background:var(--gold2);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:10px 14px;font-size:13px;color:#7a5a1a;font-style:italic;margin-top:1rem}
 
-/* ── TEST ── */
-.test-wrap{max-width:620px;margin:0 auto}
+/* TEST DAY BANNER */
 .test-banner{background:linear-gradient(135deg,#1C1408,#3d2a0a);color:#fff;border-radius:12px;padding:1.5rem;text-align:center;margin-bottom:1.5rem}
 .test-banner h2{font-size:20px;color:var(--gold);margin-bottom:6px}
+.test-banner p{font-size:13px;color:#ccc;margin-bottom:1.25rem}
+
+/* TEST */
+.test-wrap{max-width:620px;margin:0 auto}
 .test-prog-wrap{height:6px;background:var(--border);border-radius:99px;margin-bottom:.75rem}
 .test-prog{height:100%;border-radius:99px;transition:width .4s;background:var(--gold)}
-.test-meta{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted);margin-bottom:1rem}
+.test-meta{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:1rem}
+.test-level{padding:3px 10px;border-radius:99px;font-size:11px;font-weight:600}
 .test-timer{font-size:13px;font-weight:700;color:var(--red)}
-.test-q{font-size:16px;font-weight:600;line-height:1.5;margin-bottom:1.25rem}
+.test-q{font-size:16px;font-weight:600;line-height:1.5;margin-bottom:1.25rem;color:var(--text)}
 .test-opt{display:block;width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;background:#fff;color:var(--text);font-size:13px;text-align:left;cursor:pointer;margin-bottom:8px;transition:all .15s;font-family:inherit;font-weight:500}
 .test-opt:hover:not(:disabled){border-color:var(--gold);background:var(--gold2)}
 .test-opt.correct{background:#e8f8f0;border-color:var(--green);color:#1a6b40}
 .test-opt.wrong{background:#fef0f0;border-color:var(--red);color:#7b2020}
 .test-opt:disabled{cursor:default}
 
-/* ── RESULT ── */
+/* RESULT */
 .result-card{text-align:center;padding:2rem 1rem}
 .result-score{font-size:56px;font-weight:800;color:var(--gold)}
+.result-label{font-size:14px;color:var(--muted);margin-top:4px}
 .result-rank{display:inline-block;padding:6px 24px;border-radius:99px;font-size:14px;font-weight:700;margin:12px auto}
+.result-stars{font-size:30px;margin:10px 0}
 .result-breakdown{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:1.25rem 0}
 .rb-item{padding:10px;border-radius:10px;text-align:center}
 .rb-num{font-size:22px;font-weight:700}
 .rb-label{font-size:11px;margin-top:2px}
+.rb-easy{background:#e8f8f0;color:var(--easy)}
+.rb-medium{background:#fef9e7;color:#b7770d}
+.rb-hard{background:#fef0f0;color:var(--red)}
 
-/* ── LEADERBOARD ── */
+/* LEADERBOARD */
 .lb-item{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:10px 14px;margin-bottom:8px}
 .lb-rank{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0}
 .lb-1{background:#FFF3CD;color:#856404}
 .lb-2{background:#F1F1F1;color:#555}
 .lb-3{background:#FDEBD0;color:#7D4A0F}
 .lb-n{background:var(--bg);color:var(--muted)}
+.lb-name{flex:1;font-size:13px;font-weight:600}
+.lb-pct{font-size:14px;font-weight:700;color:var(--gold)}
 .lb-bar{height:4px;background:var(--border);border-radius:99px;margin-top:4px}
 .lb-fill{height:100%;background:var(--gold);border-radius:99px}
 
-/* ── CERT ── */
-.cert{background:linear-gradient(135deg,#1C1408,#3d2a0a);border-radius:16px;padding:2rem;text-align:center;color:#fff;margin-top:1rem;border:2px solid var(--gold)}
-.cert-title{font-size:11px;letter-spacing:.2em;color:#ccc;text-transform:uppercase;margin-bottom:8px}
-.cert-name{font-size:22px;font-weight:800;color:var(--gold);margin-bottom:4px}
-.cert-rank{font-size:14px;font-weight:700;color:#fff;margin:10px 0;padding:6px 18px;background:rgba(200,146,42,.3);border-radius:99px;display:inline-block}
+/* CERT */
+.cert{background:linear-gradient(135deg,#1C1408 0%,#3d2a0a 100%);border-radius:16px;padding:2rem;text-align:center;color:#fff;margin-top:1rem;border:2px solid var(--gold)}
+.cert-title{font-size:13px;letter-spacing:.2em;color:#ccc;text-transform:uppercase;margin-bottom:8px}
+.cert-name{font-size:24px;font-weight:800;color:var(--gold);margin-bottom:4px}
+.cert-sub{font-size:13px;color:#aaa}
+.cert-rank{font-size:16px;font-weight:700;color:#fff;margin:12px 0;padding:8px 20px;background:rgba(200,146,42,.3);border-radius:99px;display:inline-block}
 
-/* ── CALENDAR ── */
+/* CALENDAR */
 .cal-grid{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
 .cal-day{width:38px;height:38px;border-radius:8px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;cursor:pointer;transition:all .15s;background:#fff}
 .cal-day:hover{border-color:var(--gold)}
 .cal-day.test-day{background:var(--gold);color:#fff;border-color:var(--gold)}
 .cal-day.today{border-color:var(--blue);color:var(--blue)}
+.cal-day.past{opacity:.4;cursor:default}
 
-/* ── ANNOUNCEMENT ── */
-.ann-item{padding:10px 14px;border-radius:10px;margin-bottom:8px;display:flex;align-items:start;gap:10px;font-size:13px}
-.ann-normal{background:#EBF3FB;border-left:3px solid var(--blue)}
-.ann-important{background:#FFF3CD;border-left:3px solid var(--gold)}
-.ann-text{flex:1;line-height:1.5}
-.ann-date{font-size:11px;color:var(--muted);margin-top:4px}
+/* OFFICER HISTORY */
+.hist-item{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);font-size:13px}
+.hist-item:last-child{border:none}
+.hist-pct{font-size:16px;font-weight:700;color:var(--gold);min-width:48px}
+.hist-info{flex:1}
+.hist-date{font-size:11px;color:var(--muted)}
 
-/* ── SUPER ADMIN ── */
-.rest-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.25rem;margin-bottom:10px;display:flex;align-items:center;gap:14px;transition:border-color .15s}
-.rest-card:hover{border-color:var(--gold)}
-.rest-logo{width:48px;height:48px;border-radius:10px;background:var(--gold2);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
-.rest-info{flex:1}
-.rest-name{font-size:15px;font-weight:700;margin-bottom:4px}
-.rest-meta{font-size:12px;color:var(--muted)}
-.rest-stats{display:flex;gap:12px;margin-top:6px}
-.rest-stat{font-size:12px;color:var(--muted)}
-.rest-stat span{font-weight:600;color:var(--text)}
-
-/* ── ALERTS ── */
+/* ALERT */
 .alert{padding:10px 14px;border-radius:8px;font-size:13px;margin-bottom:1rem}
 .alert-red{background:#fef0f0;color:var(--red);border:1px solid #fcc}
 .alert-green{background:#e8f8f0;color:var(--green);border:1px solid #a9dfbf}
 .alert-gold{background:var(--gold2);color:#7a5a1a;border:1px solid #f0d099}
-.alert-blue{background:#EBF3FB;color:#1a5276;border:1px solid #aed6f1}
 
 .hidden{display:none!important}
-.flex{display:flex;align-items:center;gap:8px}
-.flex-between{display:flex;align-items:center;justify-content:space-between}
 .text-center{text-align:center}
 .mt1{margin-top:.75rem}
 .mt2{margin-top:1.5rem}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.flex{display:flex;align-items:center;gap:8px}
+.flex-between{display:flex;align-items:center;justify-content:space-between}
 </style>
 </head>
 <body>
 
-<!-- ═══ LOGIN ═══ -->
+<!-- ═══ LOGIN PAGE ═══ -->
 <div id="login-page" class="login-page hidden">
   <div class="login-box">
     <div class="login-logo">TARNOV</div>
-    <div class="login-sub">HR O'qitish Platformasi</div>
+    <div class="login-sub">Menyu o'qitish tizimi</div>
     <div class="login-tabs">
-      <button class="ltab active" onclick="setLTab('super')">Super Admin</button>
-      <button class="ltab" onclick="setLTab('admin')">Restoran</button>
-      <button class="ltab" onclick="setLTab('officer')">Ofitsiant</button>
+      <button class="login-tab active" onclick="setLoginTab('admin')">Admin</button>
+      <button class="login-tab" onclick="setLoginTab('officer')">Ofitsiant</button>
     </div>
 
-    <!-- Super Admin -->
-    <div id="super-form">
-      <div class="fg"><label class="fl">Email</label><input class="fi" id="s-email" type="email" placeholder="admin@tarnov.uz" value="admin@tarnov.uz"></div>
-      <div class="fg"><label class="fl">Parol</label><input class="fi" id="s-pass" type="password" placeholder="Parol" onkeyup="if(event.key==='Enter')superLogin()"></div>
-      <div id="s-err" class="alert alert-red hidden"></div>
-      <button class="btn btn-purple btn-full mt1" onclick="superLogin()">Kirish →</button>
-    </div>
-
-    <!-- Admin -->
-    <div id="admin-form" class="hidden">
-      <div class="fg"><label class="fl">Email</label><input class="fi" id="a-email" type="email" placeholder="restoran@email.uz"></div>
-      <div class="fg"><label class="fl">Parol</label><input class="fi" id="a-pass" type="password" placeholder="Parol" onkeyup="if(event.key==='Enter')adminLogin()"></div>
-      <div id="a-err" class="alert alert-red hidden"></div>
+    <!-- Admin login -->
+    <div id="admin-login-form">
+      <div class="fg">
+        <label class="fl">Admin paroli</label>
+        <input class="fi" type="password" id="admin-pass" placeholder="Parolni kiriting" onkeyup="if(event.key==='Enter')adminLogin()">
+      </div>
+      <div id="admin-err" class="alert alert-red hidden"></div>
       <button class="btn btn-gold btn-full mt1" onclick="adminLogin()">Kirish →</button>
     </div>
 
-    <!-- Officer -->
-    <div id="officer-form" class="hidden">
-      <div class="fg">
-        <label class="fl">Restoran tanlang</label>
-        <select class="rest-select" id="rest-select"><option value="">Yuklanmoqda...</option></select>
+    <!-- Officer login -->
+    <div id="officer-login-form" class="hidden">
+      <div style="font-size:13px;color:var(--muted);margin-bottom:1rem">4 xonali PIN kodingizni kiriting</div>
+      <div class="pin-inputs">
+        <input class="pin-box" id="pin1" type="password" maxlength="1" inputmode="numeric" onInput="pinNext(this,'pin2')" onkeydown="pinBack(event,this,'')">
+        <input class="pin-box" id="pin2" type="password" maxlength="1" inputmode="numeric" onInput="pinNext(this,'pin3')" onkeydown="pinBack(event,this,'pin1')">
+        <input class="pin-box" id="pin3" type="password" maxlength="1" inputmode="numeric" onInput="pinNext(this,'pin4')" onkeydown="pinBack(event,this,'pin2')">
+        <input class="pin-box" id="pin4" type="password" maxlength="1" inputmode="numeric" onInput="pinSubmit()" onkeydown="pinBack(event,this,'pin3')">
       </div>
-      <div style="font-size:13px;color:var(--muted);text-align:center;margin-bottom:.75rem">PIN kodingizni kiriting</div>
-      <div class="pin-wrap">
-        <input class="pin-box" id="p1" type="password" maxlength="1" inputmode="numeric" oninput="pn(this,'p2')" onkeydown="pb(event,this,'')">
-        <input class="pin-box" id="p2" type="password" maxlength="1" inputmode="numeric" oninput="pn(this,'p3')" onkeydown="pb(event,this,'p1')">
-        <input class="pin-box" id="p3" type="password" maxlength="1" inputmode="numeric" oninput="pn(this,'p4')" onkeydown="pb(event,this,'p2')">
-        <input class="pin-box" id="p4" type="password" maxlength="1" inputmode="numeric" oninput="ps()" onkeydown="pb(event,this,'p3')">
-      </div>
-      <div id="o-err" class="alert alert-red hidden"></div>
-      <button class="btn btn-green btn-full mt1" onclick="officerLogin()">Kirish →</button>
+      <div id="officer-err" class="alert alert-red hidden"></div>
+      <button class="btn btn-gold btn-full mt1" onclick="officerLogin()">Kirish →</button>
     </div>
   </div>
 </div>
 
-<!-- ═══ APP ═══ -->
+<!-- ═══ MAIN APP ═══ -->
 <div id="main-app" class="hidden">
   <nav class="nav">
     <div class="nav-inner">
       <div class="nav-brand">TARNOV</div>
-      <div id="rest-label" class="nav-rest hidden"></div>
-
-      <!-- Super tabs -->
-      <div id="super-tabs" class="hidden">
-        <button class="ntab active" onclick="gt('s-dashboard')">📊 Dashboard</button>
-        <button class="ntab" onclick="gt('s-restaurants')">🏪 Restoranlar</button>
-        <button class="ntab" onclick="gt('s-all-results')">📈 Natijalar</button>
-      </div>
-
-      <!-- Admin tabs -->
       <div id="admin-tabs" class="hidden">
-        <button class="ntab active" onclick="gt('a-dashboard')">📊 Dashboard</button>
-        <button class="ntab" onclick="gt('a-foods')">🍽 Menyu</button>
-        <button class="ntab" onclick="gt('a-officers')">👥 Ofitsiantlar</button>
-        <button class="ntab" onclick="gt('a-testdays')">📅 Test kunlari</button>
-        <button class="ntab" onclick="gt('a-announce')">📢 E'lonlar</button>
-        <button class="ntab" onclick="gt('a-results')">📈 Natijalar</button>
+        <button class="nav-tab active" onclick="gotoTab('dashboard')">📊 Dashboard</button>
+        <button class="nav-tab" onclick="gotoTab('foods')">🍽 Menyu</button>
+        <button class="nav-tab" onclick="gotoTab('officers')">👥 Ofitsiantlar</button>
+        <button class="nav-tab" onclick="gotoTab('testdays')">📅 Test kunlari</button>
+        <button class="nav-tab" onclick="gotoTab('results')">📈 Natijalar</button>
       </div>
-
-      <!-- Officer tabs -->
       <div id="officer-tabs" class="hidden">
-        <button class="ntab active" onclick="gt('o-learn')">📖 Menyu</button>
-        <button class="ntab" onclick="gt('o-test')">✏ Test <span class="nbadge" id="q-badge">0</span></button>
-        <button class="ntab" onclick="gt('o-rank')">🏆 Reyting</button>
-        <button class="ntab" onclick="gt('o-history')">📋 Tarixim</button>
+        <button class="nav-tab active" onclick="gotoTab('learn')">📖 Menyu</button>
+        <button class="nav-tab" onclick="gotoTab('test')">✏ Test <span class="nav-badge" id="q-badge">0</span></button>
+        <button class="nav-tab" onclick="gotoTab('rank')">🏆 Reyting</button>
+        <button class="nav-tab" onclick="gotoTab('history')">📋 Tarixim</button>
       </div>
-
       <div class="nav-right">
         <span class="nav-user" id="nav-user"></span>
         <button class="btn btn-outline btn-sm" onclick="logout()">Chiqish</button>
@@ -320,62 +285,23 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     </div>
   </nav>
 
-  <!-- ══ SUPER: DASHBOARD ══ -->
-  <div id="tab-s-dashboard" class="wrap hidden">
-    <div class="metrics" id="s-metrics"></div>
-    <div class="grid2">
-      <div class="card">
-        <div class="card-head"><div class="card-title">Restoranlar holati</div></div>
-        <div id="s-rest-list" style="padding:.5rem 0"></div>
-      </div>
-      <div class="card">
-        <div class="card-head"><div class="card-title">Eng faol restoranlar</div></div>
-        <div id="s-active-list" style="padding:.5rem 0"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══ SUPER: RESTAURANTS ══ -->
-  <div id="tab-s-restaurants" class="wrap hidden">
-    <div class="flex-between" style="margin-bottom:14px">
-      <div style="font-size:14px;font-weight:600">Barcha restoranlar</div>
-      <button class="btn btn-purple" onclick="openAddRest()">＋ Restoran qo'shish</button>
-    </div>
-    <div id="s-restaurants-list"></div>
-  </div>
-
-  <!-- ══ SUPER: ALL RESULTS ══ -->
-  <div id="tab-s-all-results" class="wrap hidden">
-    <div class="card">
-      <div class="card-head"><div class="card-title">Platformadagi barcha natijalar</div></div>
-      <table class="tbl">
-        <thead><tr><th>Restoran</th><th>Ofitsiant</th><th>Ball</th><th>Sana</th></tr></thead>
-        <tbody id="s-results-body"></tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- ══ ADMIN: DASHBOARD ══ -->
-  <div id="tab-a-dashboard" class="wrap hidden">
-    <div class="metrics" id="a-metrics"></div>
-    <div class="grid2">
+  <!-- ═ ADMIN: DASHBOARD ═ -->
+  <div id="tab-dashboard" class="wrap hidden">
+    <div class="metrics" id="dash-metrics"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
       <div class="card">
         <div class="card-head"><div class="card-title">So'nggi natijalar</div></div>
-        <div id="a-recent-results" style="padding:0"></div>
+        <div class="card-body" id="dash-results" style="padding:0"></div>
       </div>
       <div class="card">
-        <div class="card-head"><div class="card-title">Top ofitsiantlar</div></div>
-        <div id="a-top-officers" style="padding:.5rem 0"></div>
+        <div class="card-head"><div class="card-title">Eng yaxshi ofitsiantlar</div></div>
+        <div class="card-body" id="dash-top" style="padding:.75rem 0"></div>
       </div>
-    </div>
-    <div class="card mt2">
-      <div class="card-head"><div class="card-title">E'lonlar</div></div>
-      <div id="a-dash-ann" class="card-body"></div>
     </div>
   </div>
 
-  <!-- ══ ADMIN: FOODS ══ -->
-  <div id="tab-a-foods" class="wrap hidden">
+  <!-- ═ ADMIN: FOODS ═ -->
+  <div id="tab-foods" class="wrap hidden">
     <div class="flex-between" style="margin-bottom:12px">
       <div style="font-size:14px;font-weight:600">Taomlar ro'yxati</div>
       <button class="btn btn-gold" onclick="openAddFood()">＋ Taom qo'shish</button>
@@ -384,67 +310,45 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     <div id="food-list"></div>
   </div>
 
-  <!-- ══ ADMIN: OFFICERS ══ -->
-  <div id="tab-a-officers" class="wrap hidden">
+  <!-- ═ ADMIN: OFFICERS ═ -->
+  <div id="tab-officers" class="wrap hidden">
     <div class="flex-between" style="margin-bottom:12px">
       <div style="font-size:14px;font-weight:600">Ofitsiantlar</div>
       <button class="btn btn-gold" onclick="openAddOfficer()">＋ Ofitsiant qo'shish</button>
     </div>
     <div class="card">
-      <table class="tbl">
+      <table class="tbl" id="officers-tbl">
         <thead><tr><th>Ism</th><th>PIN</th><th>Holat</th><th>Qo'shilgan</th><th></th></tr></thead>
         <tbody id="officers-body"></tbody>
       </table>
     </div>
   </div>
 
-  <!-- ══ ADMIN: TEST DAYS ══ -->
-  <div id="tab-a-testdays" class="wrap hidden">
-    <div class="grid2">
-      <div class="card">
-        <div class="card-head"><div class="card-title">Kalendar</div></div>
-        <div class="card-body">
-          <div class="alert alert-gold" style="margin-bottom:1rem">Test kuni — ofitsiantlar menyuni ko'ra olmaydi</div>
-          <div style="font-size:13px;font-weight:600;margin-bottom:8px" id="cal-month"></div>
-          <div class="cal-grid" id="cal-grid"></div>
-          <div style="display:flex;gap:10px;margin-top:10px;font-size:11px">
-            <span><span style="display:inline-block;width:12px;height:12px;background:var(--gold);border-radius:3px;margin-right:4px"></span>Test kuni</span>
-            <span><span style="display:inline-block;width:12px;height:12px;border:2px solid var(--blue);border-radius:3px;margin-right:4px"></span>Bugun</span>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-head"><div class="card-title">Belgilangan kunlar</div></div>
-        <div class="card-body" id="testdays-list"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══ ADMIN: ANNOUNCEMENTS ══ -->
-  <div id="tab-a-announce" class="wrap hidden">
+  <!-- ═ ADMIN: TEST DAYS ═ -->
+  <div id="tab-testdays" class="wrap hidden">
     <div class="card" style="margin-bottom:1rem">
-      <div class="card-head"><div class="card-title">Yangi e'lon</div></div>
+      <div class="card-head"><div class="card-title">Test kunlarini belgilash</div></div>
       <div class="card-body">
-        <div class="fg"><label class="fl">E'lon matni</label><textarea class="ft" id="ann-text" placeholder="Ofitsiantlarga xabar..."></textarea></div>
-        <div class="flex">
-          <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer">
-            <input type="checkbox" id="ann-important"> Muhim e'lon
-          </label>
-          <button class="btn btn-gold" style="margin-left:auto" onclick="sendAnn()">📢 Yuborish</button>
+        <div class="alert alert-gold">Test kuni belgilangan kunda ofitsiantlar menyuni ko'ra olmaydi — faqat test topshiradi</div>
+        <div style="font-size:13px;font-weight:600;margin-bottom:8px" id="cal-month"></div>
+        <div class="cal-grid" id="cal-grid"></div>
+        <div style="display:flex;gap:12px;margin-top:12px;font-size:12px">
+          <span><span style="display:inline-block;width:12px;height:12px;background:var(--gold);border-radius:3px;margin-right:4px"></span>Test kuni</span>
+          <span><span style="display:inline-block;width:12px;height:12px;border:2px solid var(--blue);border-radius:3px;margin-right:4px"></span>Bugun</span>
         </div>
       </div>
     </div>
     <div class="card">
-      <div class="card-head"><div class="card-title">E'lonlar tarixi</div></div>
-      <div class="card-body" id="ann-list"></div>
+      <div class="card-head"><div class="card-title">Belgilangan test kunlari</div></div>
+      <div class="card-body" id="testdays-list"></div>
     </div>
   </div>
 
-  <!-- ══ ADMIN: RESULTS ══ -->
-  <div id="tab-a-results" class="wrap hidden">
+  <!-- ═ ADMIN: RESULTS ═ -->
+  <div id="tab-results" class="wrap hidden">
     <div class="card">
       <div class="card-head">
-        <div class="card-title">Natijalar</div>
+        <div class="card-title">Barcha natijalar</div>
         <select class="fs" style="width:auto;font-size:12px" id="result-filter" onchange="renderResults()">
           <option value="">Barcha ofitsiantlar</option>
         </select>
@@ -456,38 +360,38 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     </div>
   </div>
 
-  <!-- ══ OFFICER: LEARN ══ -->
-  <div id="tab-o-learn" class="wrap hidden">
+  <!-- ═ OFFICER: LEARN ═ -->
+  <div id="tab-learn" class="wrap hidden">
     <div id="test-day-banner" class="hidden">
       <div class="test-banner">
         <h2>📝 Bugun Test Kuni!</h2>
-        <p style="font-size:13px;color:#ccc;margin-bottom:1.25rem">Menyu yashirilgan. Bilimingizni sinab ko'ring!</p>
-        <button class="btn btn-gold" onclick="gt('o-test')">✏ Testni boshlash</button>
+        <p>Menyu ma'lumotlari yashirilgan. Bilimingizni sinab ko'ring!</p>
+        <button class="btn btn-gold" onclick="gotoTab('test')">✏ Testni boshlash</button>
       </div>
     </div>
     <div id="learn-content">
-      <div id="ann-banner"></div>
       <div class="cat-filter" id="l-cats"></div>
       <div id="learn-grid"></div>
       <div id="learn-detail" class="hidden"></div>
     </div>
   </div>
 
-  <!-- ══ OFFICER: TEST ══ -->
-  <div id="tab-o-test" class="wrap hidden">
+  <!-- ═ OFFICER: TEST ═ -->
+  <div id="tab-test" class="wrap hidden">
     <div class="test-wrap">
       <div id="t-start">
         <div class="card">
           <div class="card-body text-center" style="padding:2.5rem 1rem">
             <div style="font-size:48px;margin-bottom:1rem">📝</div>
             <div style="font-size:20px;font-weight:700;margin-bottom:8px">Menyu Testi</div>
-            <div style="font-size:13px;color:var(--muted);margin-bottom:1.5rem;line-height:1.7">
-              <span class="chip chip-easy">10 Oson</span>
-              <span class="chip chip-medium">5 O'rta</span>
-              <span class="chip chip-hard">5 Qiyin</span><br>
-              <span style="margin-top:6px;display:inline-block">⏱ Har savolga 30 soniya</span>
+            <div style="font-size:13px;color:var(--muted);margin-bottom:1.5rem;line-height:1.6">
+              Test 3 qiyinlik darajasidan iborat:<br>
+              <span class="chip chip-easy">10 ta Oson</span>
+              <span class="chip chip-medium">5 ta O'rta</span>
+              <span class="chip chip-hard">5 ta Qiyin</span>
             </div>
-            <button class="btn btn-gold btn-full" onclick="startTest()">▶ Boshlash</button>
+            <div style="font-size:13px;color:var(--muted);margin-bottom:1.5rem">⏱ Har bir savolga <b>30 soniya</b></div>
+            <button class="btn btn-gold btn-full" onclick="startTest()">▶ Testni boshlash</button>
           </div>
         </div>
       </div>
@@ -495,7 +399,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
         <div class="test-prog-wrap"><div class="test-prog" id="tpb" style="width:0%"></div></div>
         <div class="test-meta">
           <span id="t-counter"></span>
-          <span id="t-level"></span>
+          <span id="t-level-chip"></span>
           <span class="test-timer" id="t-timer">⏱ 30</span>
         </div>
         <div class="test-q" id="t-q"></div>
@@ -505,14 +409,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
     </div>
   </div>
 
-  <!-- ══ OFFICER: RANK ══ -->
-  <div id="tab-o-rank" class="wrap hidden">
-    <div style="font-size:14px;font-weight:600;margin-bottom:12px">🏆 Reyting</div>
+  <!-- ═ OFFICER: RANK ═ -->
+  <div id="tab-rank" class="wrap hidden">
+    <div style="font-size:14px;font-weight:600;margin-bottom:12px">🏆 Ofitsiantlar reytingi</div>
     <div id="lb-list"></div>
   </div>
 
-  <!-- ══ OFFICER: HISTORY ══ -->
-  <div id="tab-o-history" class="wrap hidden">
+  <!-- ═ OFFICER: HISTORY ═ -->
+  <div id="tab-history" class="wrap hidden">
     <div class="card">
       <div class="card-head"><div class="card-title">Mening natijalarim</div></div>
       <div class="card-body" id="history-list"></div>
@@ -523,16 +427,19 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 <!-- FOOD MODAL -->
 <div id="food-modal" class="overlay hidden" onclick="bgClose(event,'food-modal')">
   <div class="modal">
-    <div class="modal-head"><div class="modal-title" id="fm-title">Yangi taom</div><button class="icon-btn" onclick="closeModal('food-modal')" style="border:none;font-size:20px">×</button></div>
+    <div class="modal-head">
+      <div class="modal-title" id="fm-title">Yangi taom</div>
+      <button class="icon-btn" onclick="closeModal('food-modal')" style="border:none;font-size:20px">×</button>
+    </div>
     <div class="modal-body">
       <div class="fg">
         <label class="fl">Rasm</label>
         <div class="img-drop" id="img-drop" onclick="pickImg()">
-          <div id="img-ph"><div style="font-size:28px;color:var(--muted)">📷</div><div style="font-size:12px;color:var(--muted);margin-top:6px">Bosib rasm tanlang</div></div>
+          <div id="img-ph" style="padding:.5rem"><div style="font-size:28px;color:var(--muted)">📷</div><div style="font-size:12px;color:var(--muted);margin-top:6px">Bosib rasm tanlang (JPG, PNG — max 2MB)</div></div>
           <img id="img-prev" style="display:none;width:100%;height:150px;object-fit:cover">
           <div id="img-acts" class="img-acts hidden">
-            <button class="btn btn-outline btn-sm" onclick="pickImg2(event)">🔄</button>
-            <button class="btn btn-red btn-sm" onclick="delImg(event)">🗑</button>
+            <button class="btn btn-outline btn-sm" onclick="pickImg2(event)">🔄 O'zgartirish</button>
+            <button class="btn btn-red btn-sm" onclick="delImg(event)">🗑 O'chirish</button>
           </div>
         </div>
         <input type="file" id="img-file" accept="image/*" class="hidden" onchange="onImg(event)">
@@ -540,7 +447,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
       <div class="frow">
         <div class="fg"><label class="fl">Taom nomi *</label><input class="fi" id="f-name" placeholder="Toshkent oshi"></div>
         <div class="fg"><label class="fl">Kategoriya</label>
-          <select class="fs" id="f-cat"><option>Sho'rvalar</option><option>Asosiy taomlar</option><option>Salatlar</option><option>Shirinliklar</option><option>Ichimliklar</option><option>Nonlar</option><option>Boshqa</option></select>
+          <select class="fs" id="f-cat">
+            <option>Sho'rvalar</option><option>Asosiy taomlar</option><option>Salatlar</option>
+            <option>Shirinliklar</option><option>Ichimliklar</option><option>Nonlar</option><option>Boshqa</option>
+          </select>
         </div>
       </div>
       <div class="frow">
@@ -548,19 +458,26 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
         <div class="fg"><label class="fl">Porsiya</label><input class="fi" id="f-portion" placeholder="350 gr"></div>
       </div>
       <div class="frow">
-        <div class="fg"><label class="fl">Vaqt</label><input class="fi" id="f-time" placeholder="25-30 daqiqa"></div>
-        <div class="fg"><label class="fl">Emoji</label><input class="fi" id="f-emoji" placeholder="🍛" maxlength="2"></div>
+        <div class="fg"><label class="fl">Tayyorlanish vaqti</label><input class="fi" id="f-time" placeholder="25-30 daqiqa"></div>
+        <div class="fg"><label class="fl">Emoji (rasm yo'q bo'lsa)</label><input class="fi" id="f-emoji" placeholder="🍛" maxlength="2"></div>
       </div>
-      <div class="fg"><label class="fl">Tarkibi</label><textarea class="ft" id="f-ingr" placeholder="Guruch, sabzi..."></textarea></div>
-      <div class="fg"><label class="fl">Allergenlar</label><input class="fi" id="f-allergy" placeholder="Yong'oq yo'q..."></div>
-      <div class="fg"><label class="fl">Mos ichimlik</label><input class="fi" id="f-drink" placeholder="Ko'k choy..."></div>
-      <div class="fg"><label class="fl">Tavsiya iborasi</label><textarea class="ft" id="f-phrase" placeholder="Mehmonlarga tavsiya..."></textarea></div>
+      <div class="fg"><label class="fl">Tarkibi</label><textarea class="ft" id="f-ingr" placeholder="Guruch, sabzi, go'sht..."></textarea></div>
+      <div class="fg"><label class="fl">Allergenlar</label><input class="fi" id="f-allergy" placeholder="Yong'oq yo'q, glutensiz..."></div>
+      <div class="fg"><label class="fl">Mos ichimliklar</label><input class="fi" id="f-drink" placeholder="Ko'k choy, ayron"></div>
+      <div class="fg"><label class="fl">Tavsiya iborasi</label><textarea class="ft" id="f-phrase" placeholder="Mehmonlarga tavsiya qilish jumlasi..."></textarea></div>
       <div class="fg">
-        <div class="flex-between" style="margin-bottom:8px"><label class="fl" style="margin:0">Test savollari</label></div>
+        <div class="flex-between" style="margin-bottom:8px">
+          <label class="fl" style="margin:0">Test savollari</label>
+          <span style="font-size:11px;color:var(--muted)">Daraja tanlang</span>
+        </div>
         <div id="q-list-modal"></div>
         <div style="display:flex;gap:6px;margin-top:6px">
-          <input class="fi" id="q-inp" placeholder="Savol..." style="flex:1">
-          <select class="fs" id="q-level" style="width:90px"><option value="easy">Oson</option><option value="medium">O'rta</option><option value="hard">Qiyin</option></select>
+          <input class="fi" id="q-inp" placeholder="Savol matni..." style="flex:1">
+          <select class="fs" id="q-level" style="width:100px">
+            <option value="easy">Oson</option>
+            <option value="medium">O'rta</option>
+            <option value="hard">Qiyin</option>
+          </select>
           <button class="btn btn-outline" onclick="addQ()">＋</button>
         </div>
       </div>
@@ -575,10 +492,17 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 <!-- OFFICER MODAL -->
 <div id="officer-modal" class="overlay hidden" onclick="bgClose(event,'officer-modal')">
   <div class="modal" style="max-width:400px">
-    <div class="modal-head"><div class="modal-title" id="om-title">Yangi ofitsiant</div><button class="icon-btn" onclick="closeModal('officer-modal')" style="border:none;font-size:20px">×</button></div>
+    <div class="modal-head">
+      <div class="modal-title" id="om-title">Yangi ofitsiant</div>
+      <button class="icon-btn" onclick="closeModal('officer-modal')" style="border:none;font-size:20px">×</button>
+    </div>
     <div class="modal-body">
       <div class="fg"><label class="fl">Ism Familiya *</label><input class="fi" id="o-name" placeholder="Dilnoza Salimova"></div>
-      <div class="fg"><label class="fl">PIN kod (4 raqam) *</label><input class="fi" id="o-pin" type="text" inputmode="numeric" maxlength="4" placeholder="1234"></div>
+      <div class="fg">
+        <label class="fl">PIN kod (4 raqam) *</label>
+        <input class="fi" id="o-pin" type="text" inputmode="numeric" maxlength="4" placeholder="1234">
+        <div style="font-size:11px;color:var(--muted);margin-top:4px">Ofitsiant shu PIN bilan kiradi</div>
+      </div>
       <div id="om-err" class="alert alert-red hidden"></div>
     </div>
     <div class="modal-foot">
@@ -588,59 +512,29 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   </div>
 </div>
 
-<!-- RESTAURANT MODAL -->
-<div id="rest-modal" class="overlay hidden" onclick="bgClose(event,'rest-modal')">
-  <div class="modal" style="max-width:480px">
-    <div class="modal-head"><div class="modal-title" id="rm-title">Yangi restoran</div><button class="icon-btn" onclick="closeModal('rest-modal')" style="border:none;font-size:20px">×</button></div>
-    <div class="modal-body">
-      <div class="fg"><label class="fl">Restoran nomi *</label><input class="fi" id="r-name" placeholder="Eski Juva Restoran"></div>
-      <div class="fg">
-        <label class="fl">Slug (URL uchun) *</label>
-        <input class="fi" id="r-slug" placeholder="eskijuva" oninput="this.value=this.value.toLowerCase().replace(/[^a-z0-9-]/g,'')">
-        <div style="font-size:11px;color:var(--muted);margin-top:4px">Faqat kichik harf, raqam va - (masalan: eski-juva)</div>
-      </div>
-      <div class="fg"><label class="fl">Admin email *</label><input class="fi" id="r-email" type="email" placeholder="admin@eskijuva.uz"></div>
-      <div class="fg"><label class="fl">Admin paroli *</label><input class="fi" id="r-pass" type="password" placeholder="Kamida 6 belgi"></div>
-      <div class="fg">
-        <label class="fl">Tarif</label>
-        <select class="fs" id="r-plan"><option value="starter">Starter</option><option value="pro">Pro</option></select>
-      </div>
-      <div id="rm-err" class="alert alert-red hidden"></div>
-    </div>
-    <div class="modal-foot">
-      <button class="btn btn-outline" onclick="closeModal('rest-modal')">Bekor</button>
-      <button class="btn btn-purple" onclick="saveRestaurant()">✓ Saqlash</button>
-    </div>
-  </div>
-</div>
-
 <script>
-// ══════════════════════════
+// ══════════════════════════════
 // STATE
-// ══════════════════════════
-let role='guest', currentUser=null;
-let foods=[], officers=[], results=[], testDays=[], announcements=[];
-let editFoodId=null, editOfficerId=null;
-let curImg=null, removeImgFlag=false, tempQs=[];
-let aCat='Barchasi', lCat='Barchasi';
-let testQs=[], tIdx=0, tScore=0, timerInt=null, timeLeft=30;
-let easyScore=0, medScore=0, hardScore=0, testDetails=[];
-let testStartTime;
+// ══════════════════════════════
+let role = 'guest', currentUser = null;
+let foods = [], officers = [], results = [], testDays = [];
+let editFoodId = null, editOfficerId = null;
+let curImg = null, removeImgFlag = false, tempQs = [];
+let aCat = 'Barchasi', lCat = 'Barchasi';
+let testQs = [], tIdx = 0, tScore = 0, timerInt = null, timeLeft = 30;
+let easyScore = 0, medScore = 0, hardScore = 0;
 let calYear, calMonth;
-let superStats=[];
 
-// ══════════════════════════
+// ══════════════════════════════
 // INIT
-// ══════════════════════════
+// ══════════════════════════════
 async function init() {
   const r = await fetch('/api/auth/check');
   const d = await r.json();
   role = d.role;
-  if (role==='guest') { await loadRestaurants(); showLogin(); return; }
-  currentUser = d;
-  if (role==='super') showApp('super');
-  else if (role==='admin') showApp('admin');
-  else if (role==='officer') showApp('officer');
+  if (role === 'guest') { showLogin(); return; }
+  if (role === 'admin') { currentUser = { name: 'Admin' }; showApp('admin'); }
+  if (role === 'officer') { currentUser = { id: d.id, name: d.name }; showApp('officer'); }
 }
 
 function showLogin() {
@@ -651,272 +545,164 @@ function showLogin() {
 async function showApp(r) {
   document.getElementById('login-page').classList.add('hidden');
   document.getElementById('main-app').classList.remove('hidden');
-  const uEl = document.getElementById('nav-user');
-  const roleLabel = r==='super'?'Super Admin':r==='admin'?'Admin':'Ofitsiant';
-  const roleClass = `role-${r}`;
-  uEl.innerHTML = `${currentUser.name||currentUser.email||''} <span class="nav-role ${roleClass}">${roleLabel}</span>`;
-  ['super','admin','officer'].forEach(t => document.getElementById(t+'-tabs').classList.add('hidden'));
-  document.getElementById(r+'-tabs').classList.remove('hidden');
-  const rl = document.getElementById('rest-label');
-  if (r==='admin'||r==='officer') { rl.textContent = currentUser.name||''; rl.classList.remove('hidden'); }
-  else rl.classList.add('hidden');
-  if (r==='super') { await loadSuperData(); gt('s-dashboard'); }
-  else if (r==='admin') { await loadAdminData(); gt('a-dashboard'); }
-  else { await loadOfficerData(); gt('o-learn'); }
+  document.getElementById('nav-user').textContent = currentUser.name;
+  if (r === 'admin') {
+    document.getElementById('admin-tabs').classList.remove('hidden');
+    document.getElementById('officer-tabs').classList.add('hidden');
+    await loadAdminData();
+    gotoTab('dashboard');
+  } else {
+    document.getElementById('officer-tabs').classList.remove('hidden');
+    document.getElementById('admin-tabs').classList.add('hidden');
+    await checkTestDay();
+    gotoTab('learn');
+  }
 }
 
-// ══════════════════════════
+// ══════════════════════════════
 // LOGIN
-// ══════════════════════════
-let lTab='super';
-function setLTab(t) {
-  lTab=t;
-  document.querySelectorAll('.ltab').forEach((b,i)=>b.classList.toggle('active',['super','admin','officer'][i]===t));
-  ['super-form','admin-form','officer-form'].forEach((id,i)=>document.getElementById(id).classList.toggle('hidden',['super','admin','officer'][i]!==t));
-}
-
-async function loadRestaurants() {
-  const r = await fetch('/api/restaurants');
-  const list = await r.json();
-  const sel = document.getElementById('rest-select');
-  sel.innerHTML = list.map(r=>`<option value="${r.slug}">${r.name}</option>`).join('');
-}
-
-async function superLogin() {
-  const email=document.getElementById('s-email').value;
-  const password=document.getElementById('s-pass').value;
-  const r=await fetch('/api/super/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,password})});
-  const d=await r.json();
-  if(d.error){showErr('s-err',d.error);return;}
-  role='super';currentUser={email,name:'Super Admin'};showApp('super');
+// ══════════════════════════════
+let loginTab = 'admin';
+function setLoginTab(t) {
+  loginTab = t;
+  document.querySelectorAll('.login-tab').forEach((b,i)=>b.classList.toggle('active',['admin','officer'][i]===t));
+  document.getElementById('admin-login-form').classList.toggle('hidden', t!=='admin');
+  document.getElementById('officer-login-form').classList.toggle('hidden', t!=='officer');
+  ['pin1','pin2','pin3','pin4'].forEach(id=>document.getElementById(id).value='');
 }
 
 async function adminLogin() {
-  const email=document.getElementById('a-email').value;
-  const password=document.getElementById('a-pass').value;
-  const r=await fetch('/api/admin/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email,password})});
-  const d=await r.json();
-  if(d.error){showErr('a-err',d.error);return;}
-  role='admin';currentUser={slug:d.restaurant.slug,name:d.restaurant.name};showApp('admin');
+  const pass = document.getElementById('admin-pass').value;
+  const r = await fetch('/api/admin/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password:pass})});
+  const d = await r.json();
+  if (d.error) { showErr('admin-err', d.error); return; }
+  document.cookie = `adminToken=${d.token};path=/;max-age=604800`;
+  role='admin'; currentUser={name:'Admin'}; showApp('admin');
 }
 
 async function officerLogin() {
-  const slug=document.getElementById('rest-select').value;
-  const pin=['p1','p2','p3','p4'].map(id=>document.getElementById(id).value).join('');
-  if(!slug){showErr('o-err','Restoran tanlang');return;}
-  if(pin.length<4){showErr('o-err','4 ta raqam kiriting');return;}
-  const r=await fetch('/api/officer/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({slug,pin})});
-  const d=await r.json();
-  if(d.error){showErr('o-err',d.error);return;}
-  role='officer';currentUser={id:d.officer.id,name:d.officer.name,slug:d.officer.slug};
-  document.getElementById('nav-user').dataset.restName=d.restaurant.name;
-  showApp('officer');
+  const pin = ['pin1','pin2','pin3','pin4'].map(id=>document.getElementById(id).value).join('');
+  if (pin.length < 4) { showErr('officer-err','4 ta raqam kiriting'); return; }
+  const r = await fetch('/api/officer/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({pin})});
+  const d = await r.json();
+  if (d.error) { showErr('officer-err', d.error); return; }
+  document.cookie = `officerToken=${d.token};path=/;max-age=43200`;
+  role='officer'; currentUser={id:d.officer.id,name:d.officer.name}; showApp('officer');
 }
 
-function pn(el,nId){if(el.value)document.getElementById(nId).focus();}
-function pb(e,el,pId){if(e.key==='Backspace'&&!el.value&&pId)document.getElementById(pId).focus();}
-function ps(){const p=['p1','p2','p3','p4'].map(id=>document.getElementById(id).value).join('');if(p.length===4)officerLogin();}
+function pinNext(el, nextId) { if(el.value) document.getElementById(nextId).focus(); }
+function pinBack(e, el, prevId) { if(e.key==='Backspace'&&!el.value&&prevId) document.getElementById(prevId).focus(); }
+function pinSubmit() { const pin=['pin1','pin2','pin3','pin4'].map(id=>document.getElementById(id).value).join(''); if(pin.length===4) officerLogin(); }
 
 async function logout() {
-  await fetch('/api/logout',{method:'POST'});
-  ['superToken','adminToken','officerToken'].forEach(c=>{document.cookie=c+'=;path=/;max-age=0';});
-  role='guest';currentUser=null;
-  await loadRestaurants();showLogin();
+  if(role==='admin') await fetch('/api/admin/logout',{method:'POST'});
+  else await fetch('/api/officer/logout',{method:'POST'});
+  document.cookie='adminToken=;path=/;max-age=0';
+  document.cookie='officerToken=;path=/;max-age=0';
+  role='guest'; currentUser=null;
+  showLogin();
+  document.getElementById('admin-pass').value='';
+  ['pin1','pin2','pin3','pin4'].forEach(id=>document.getElementById(id).value='');
 }
 
-function showErr(id,msg){const el=document.getElementById(id);el.textContent=msg;el.classList.remove('hidden');}
+function showErr(id, msg) { const el=document.getElementById(id); el.textContent=msg; el.classList.remove('hidden'); }
+function hideErr(id) { document.getElementById(id).classList.add('hidden'); }
 
-// ══════════════════════════
+// ══════════════════════════════
 // TABS
-// ══════════════════════════
-const allTabs=['s-dashboard','s-restaurants','s-all-results','a-dashboard','a-foods','a-officers','a-testdays','a-announce','a-results','o-learn','o-test','o-rank','o-history'];
+// ══════════════════════════════
+const adminTabs = ['dashboard','foods','officers','testdays','results'];
+const officerTabs = ['learn','test','rank','history'];
 
-function gt(name) {
-  allTabs.forEach(t=>document.getElementById('tab-'+t)?.classList.add('hidden'));
-  document.querySelectorAll('.ntab').forEach(b=>b.classList.remove('active'));
+function gotoTab(name) {
+  const allTabs = [...adminTabs,...officerTabs];
+  allTabs.forEach(t => document.getElementById('tab-'+t)?.classList.add('hidden'));
+  document.querySelectorAll('.nav-tab').forEach(b=>b.classList.remove('active'));
   document.getElementById('tab-'+name)?.classList.remove('hidden');
-  const tabsMap={
-    super:['s-dashboard','s-restaurants','s-all-results'],
-    admin:['a-dashboard','a-foods','a-officers','a-testdays','a-announce','a-results'],
-    officer:['o-learn','o-test','o-rank','o-history']
-  };
-  const tabs=tabsMap[role]||[];
-  const idx=tabs.indexOf(name);
-  const btns=document.querySelectorAll(`#${role}-tabs .ntab`);
-  if(idx>=0&&btns[idx])btns[idx].classList.add('active');
-  if(name==='s-dashboard')renderSuperDash();
-  if(name==='s-restaurants')renderSuperRests();
-  if(name==='s-all-results')renderSuperResults();
-  if(name==='a-dashboard')renderAdminDash();
-  if(name==='a-foods')renderFoods();
-  if(name==='a-officers')renderOfficers();
-  if(name==='a-testdays')renderTestDays();
-  if(name==='a-announce')renderAnnounce();
-  if(name==='a-results')renderResults();
-  if(name==='o-learn')renderLearn();
-  if(name==='o-rank')renderRank();
-  if(name==='o-history')renderHistory();
+  const tabs = role==='admin'?adminTabs:officerTabs;
+  const idx = tabs.indexOf(name);
+  const btns = document.querySelectorAll(role==='admin'?'#admin-tabs .nav-tab':'#officer-tabs .nav-tab');
+  if(idx>=0 && btns[idx]) btns[idx].classList.add('active');
+  if(name==='dashboard') renderDashboard();
+  if(name==='foods') renderFoods();
+  if(name==='officers') renderOfficers();
+  if(name==='testdays') renderTestDays();
+  if(name==='results') renderResults();
+  if(name==='learn') renderLearn();
+  if(name==='rank') renderRank();
+  if(name==='history') renderHistory();
 }
 
-// ══════════════════════════
-// SUPER DATA
-// ══════════════════════════
-async function loadSuperData() {
-  const r=await fetch('/api/super/stats');
-  superStats=await r.json();
-}
-
-function renderSuperDash() {
-  const total=superStats.length;
-  const active=superStats.filter(r=>r.active).length;
-  const totalOfficers=superStats.reduce((s,r)=>s+r.officersCount,0);
-  const totalResults=superStats.reduce((s,r)=>s+r.resultsCount,0);
-  document.getElementById('s-metrics').innerHTML=`
-    <div class="metric"><div class="metric-label">Restoranlar</div><div class="metric-val">${total}</div><div class="metric-sub">Jami</div></div>
-    <div class="metric"><div class="metric-label">Faol</div><div class="metric-val">${active}</div><div class="metric-sub">Ishlamoqda</div></div>
-    <div class="metric"><div class="metric-label">Ofitsiantlar</div><div class="metric-val">${totalOfficers}</div><div class="metric-sub">Jami</div></div>
-    <div class="metric"><div class="metric-label">Testlar</div><div class="metric-val">${totalResults}</div><div class="metric-sub">Topshirildi</div></div>`;
-  document.getElementById('s-rest-list').innerHTML=superStats.slice(0,5).map(r=>`
-    <div style="display:flex;align-items:center;gap:10px;padding:8px 1.25rem;border-bottom:1px solid var(--border)">
-      <div style="font-size:13px;font-weight:500;flex:1">${r.name}</div>
-      <span class="chip ${r.active?'chip-active':'chip-inactive'}">${r.active?'Faol':'Nofaol'}</span>
-      <span class="chip chip-cat">${r.plan}</span>
-    </div>`).join('');
-  const sorted=[...superStats].sort((a,b)=>b.resultsCount-a.resultsCount);
-  document.getElementById('s-active-list').innerHTML=sorted.slice(0,5).map((r,i)=>`
-    <div style="display:flex;align-items:center;gap:10px;padding:8px 1.25rem;border-bottom:1px solid var(--border)">
-      <div style="font-size:13px;font-weight:700;color:var(--gold);width:20px">${i+1}</div>
-      <div style="font-size:13px;font-weight:500;flex:1">${r.name}</div>
-      <div style="font-size:12px;color:var(--muted)">${r.resultsCount} test</div>
-    </div>`).join('');
-}
-
-function renderSuperRests() {
-  document.getElementById('s-restaurants-list').innerHTML=superStats.map(r=>`
-    <div class="rest-card">
-      <div class="rest-logo">🏪</div>
-      <div class="rest-info">
-        <div class="rest-name">${r.name}</div>
-        <div class="rest-meta">${r.adminEmail} · /${r.slug}</div>
-        <div class="rest-stats">
-          <div class="rest-stat"><span>${r.foodsCount}</span> taom</div>
-          <div class="rest-stat"><span>${r.officersCount}</span> ofitsiant</div>
-          <div class="rest-stat"><span>${r.resultsCount}</span> test</div>
-        </div>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end">
-        <div><span class="chip ${r.active?'chip-active':'chip-inactive'}">${r.active?'Faol':'Nofaol'}</span> <span class="chip chip-pro">${r.plan}</span></div>
-        <div class="flex">
-          <button class="btn btn-outline btn-sm" onclick="toggleRest('${r.slug}',${!r.active})">${r.active?'⏸ To\'xtat':'▶ Yoqish'}</button>
-          <button class="btn btn-red btn-sm" onclick="deleteRest('${r.slug}')">🗑</button>
-        </div>
-      </div>
-    </div>`).join('');
-}
-
-function renderSuperResults() {
-  const allResults=[];
-  superStats.forEach(r=>{
-    // Har restoran fayli yuklanmagan, shuning uchun bo'sh
-  });
-  document.getElementById('s-results-body').innerHTML='<tr><td colspan="4" style="text-align:center;color:var(--muted);padding:2rem">Natijalarni ko\'rish uchun har bir restoran adminiga kiring</td></tr>';
-}
-
-function openAddRest(){
-  ['r-name','r-slug','r-email','r-pass'].forEach(id=>document.getElementById(id).value='');
-  document.getElementById('r-plan').value='starter';
-  document.getElementById('rm-err').classList.add('hidden');
-  document.getElementById('rest-modal').classList.remove('hidden');
-}
-
-async function saveRestaurant(){
-  const name=document.getElementById('r-name').value.trim();
-  const slug=document.getElementById('r-slug').value.trim();
-  const adminEmail=document.getElementById('r-email').value.trim();
-  const adminPassword=document.getElementById('r-pass').value;
-  const plan=document.getElementById('r-plan').value;
-  if(!name||!slug||!adminEmail||!adminPassword){showErr('rm-err','Barcha maydonlar kerak');return;}
-  const r=await fetch('/api/super/restaurants',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,slug,adminEmail,adminPassword,plan})});
-  const d=await r.json();
-  if(d.error){showErr('rm-err',d.error);return;}
-  closeModal('rest-modal');await loadSuperData();renderSuperRests();renderSuperDash();
-}
-
-async function toggleRest(slug,active){
-  await fetch('/api/super/restaurants/'+slug,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({active})});
-  await loadSuperData();renderSuperRests();
-}
-
-async function deleteRest(slug){
-  if(!confirm('Restoranni o\'chirasizmi? Bu amal qaytarib bo\'lmaydi!'))return;
-  await fetch('/api/super/restaurants/'+slug,{method:'DELETE'});
-  await loadSuperData();renderSuperRests();renderSuperDash();
-}
-
-// ══════════════════════════
+// ══════════════════════════════
 // ADMIN DATA
-// ══════════════════════════
+// ══════════════════════════════
 async function loadAdminData() {
-  const [f,o,r,td,an]=await Promise.all([
+  const [f,o,r,td] = await Promise.all([
     fetch('/api/foods').then(r=>r.json()),
     fetch('/api/officers').then(r=>r.json()),
     fetch('/api/results').then(r=>r.json()),
     fetch('/api/testdays').then(r=>r.json()),
-    fetch('/api/announcements').then(r=>r.json()),
   ]);
-  foods=f.foods||[];officers=o;results=r;testDays=td;announcements=an;
+  foods = f.foods||f; officers = o; results = r; testDays = td;
   updateQBadge();
 }
 
-function updateQBadge(){const t=foods.reduce((s,f)=>s+(f.questions||[]).length,0);document.getElementById('q-badge').textContent=t;}
+function updateQBadge() {
+  const total = foods.reduce((s,f)=>s+(f.questions||[]).length,0);
+  document.getElementById('q-badge').textContent = total;
+}
 
-function renderAdminDash(){
-  const today=new Date().toISOString().split('T')[0];
-  const todayR=results.filter(r=>r.date===today);
-  const avg=results.length?Math.round(results.reduce((s,r)=>s+r.pct,0)/results.length):0;
-  document.getElementById('a-metrics').innerHTML=`
-    <div class="metric"><div class="metric-label">Taomlar</div><div class="metric-val">${foods.length}</div></div>
-    <div class="metric"><div class="metric-label">Ofitsiantlar</div><div class="metric-val">${officers.length}</div></div>
-    <div class="metric"><div class="metric-label">Bugungi test</div><div class="metric-val">${todayR.length}</div></div>
-    <div class="metric"><div class="metric-label">O'rtacha ball</div><div class="metric-val">${avg}%</div></div>
-    <div class="metric"><div class="metric-label">Test kuni</div><div class="metric-val" style="font-size:18px">${testDays.includes(today)?'✅':'❌'}</div></div>`;
-  const last5=[...results].sort((a,b)=>new Date(b.createdAt)-new Date(a.createdAt)).slice(0,5);
-  document.getElementById('a-recent-results').innerHTML=last5.length?last5.map(r=>`
-    <div style="display:flex;align-items:center;gap:10px;padding:10px 1.25rem;border-bottom:1px solid var(--border)">
-      <div style="font-size:16px;font-weight:700;color:var(--gold);min-width:44px">${r.pct}%</div>
-      <div style="flex:1"><div style="font-size:13px;font-weight:500">${r.officerName}</div><div style="font-size:11px;color:var(--muted)">${r.date}</div></div>
+// ══════════════════════════════
+// DASHBOARD
+// ══════════════════════════════
+function renderDashboard() {
+  const today = new Date().toISOString().split('T')[0];
+  const todayResults = results.filter(r=>r.date===today);
+  const avgPct = results.length ? Math.round(results.reduce((s,r)=>s+r.pct,0)/results.length) : 0;
+  document.getElementById('dash-metrics').innerHTML = `
+    <div class="metric"><div class="metric-label">Taomlar</div><div class="metric-val">${foods.length}</div><div class="metric-sub">Menyuda</div></div>
+    <div class="metric"><div class="metric-label">Ofitsiantlar</div><div class="metric-val">${officers.length}</div><div class="metric-sub">Faol</div></div>
+    <div class="metric"><div class="metric-label">Bugungi test</div><div class="metric-val">${todayResults.length}</div><div class="metric-sub">Topshirildi</div></div>
+    <div class="metric"><div class="metric-label">O'rtacha ball</div><div class="metric-val">${avgPct}%</div><div class="metric-sub">Jami</div></div>
+    <div class="metric"><div class="metric-label">Test kuni</div><div class="metric-val" style="font-size:18px">${testDays.includes(today)?'✅ Ha':'❌ Yo\'q'}</div><div class="metric-sub">Bugun</div></div>`;
+
+  const last5 = [...results].sort((a,b)=>new Date(b.createdAt)-new Date(a.createdAt)).slice(0,5);
+  document.getElementById('dash-results').innerHTML = last5.length ? last5.map(r=>`
+    <div class="hist-item" style="padding:10px 1.25rem">
+      <div class="hist-pct">${r.pct}%</div>
+      <div class="hist-info"><div style="font-size:13px;font-weight:500">${r.officerName}</div><div class="hist-date">${r.score}/${r.total} to'g'ri · ${r.date}</div></div>
       <span class="chip ${r.pct>=90?'chip-easy':r.pct>=70?'chip-medium':'chip-hard'}">${r.pct>=90?'Ekspert':r.pct>=70?'Senior':'Junior'}</span>
-    </div>`).join(''):'<div style="padding:1rem;text-align:center;color:var(--muted);font-size:13px">Hali natija yo\'q</div>';
-  const lb={};results.forEach(r=>{if(!lb[r.officerName]||lb[r.officerName]<r.pct)lb[r.officerName]=r.pct;});
-  const top=Object.entries(lb).sort((a,b)=>b[1]-a[1]).slice(0,5);
-  document.getElementById('a-top-officers').innerHTML=top.length?top.map(([name,pct],i)=>`
-    <div style="display:flex;align-items:center;gap:10px;padding:8px 1.25rem">
+    </div>`).join('') : '<div style="padding:1rem;color:var(--muted);font-size:13px;text-align:center">Hali natija yo\'q</div>';
+
+  const lb = {};
+  results.forEach(r=>{ if(!lb[r.officerName]||lb[r.officerName]<r.pct) lb[r.officerName]=r.pct; });
+  const top = Object.entries(lb).sort((a,b)=>b[1]-a[1]).slice(0,5);
+  document.getElementById('dash-top').innerHTML = top.length ? top.map(([name,pct],i)=>`
+    <div class="lb-item" style="margin:0 .75rem .5rem">
       <div class="lb-rank ${['lb-1','lb-2','lb-3'][i]||'lb-n'}">${i+1}</div>
-      <div style="flex:1"><div style="font-size:13px;font-weight:500">${name}</div><div class="lb-bar"><div class="lb-fill" style="width:${pct}%"></div></div></div>
-      <div style="font-size:13px;font-weight:700;color:var(--gold)">${pct}%</div>
-    </div>`).join(''):'<div style="padding:1rem;text-align:center;color:var(--muted);font-size:13px">Hali natija yo\'q</div>';
-  document.getElementById('a-dash-ann').innerHTML=announcements.length?announcements.slice(0,3).map(a=>`
-    <div class="ann-item ${a.important?'ann-important':'ann-normal'}">
-      <div class="ann-text">${a.text}<div class="ann-date">${a.createdAt?.split('T')[0]||''}</div></div>
-    </div>`).join(''):'<div style="color:var(--muted);font-size:13px">Hali e\'lon yo\'q</div>';
+      <div style="flex:1"><div class="lb-name">${name}</div><div class="lb-bar"><div class="lb-fill" style="width:${pct}%"></div></div></div>
+      <div class="lb-pct">${pct}%</div>
+    </div>`).join('') : '<div style="padding:1rem;color:var(--muted);font-size:13px;text-align:center">Hali natija yo\'q</div>';
 }
 
+// ══════════════════════════════
 // FOODS
-function renderFoods(){
+// ══════════════════════════════
+function renderFoods() {
   updateQBadge();
-  const cats=['Barchasi',...new Set(foods.map(f=>f.cat))];
-  document.getElementById('food-cats').innerHTML=cats.map(c=>`<button class="cat-btn${c===aCat?' active':''}" onclick="setACat('${c}')">${c}</button>`).join('');
-  const list=aCat==='Barchasi'?foods:foods.filter(f=>f.cat===aCat);
-  document.getElementById('food-list').innerHTML=list.map(f=>`
+  const allCats = ['Barchasi',...new Set(foods.map(f=>f.cat))];
+  document.getElementById('food-cats').innerHTML = allCats.map(c=>`<button class="cat-btn${c===aCat?' active':''}" onclick="setACat('${c}')">${c}</button>`).join('');
+  const list = aCat==='Barchasi'?foods:foods.filter(f=>f.cat===aCat);
+  document.getElementById('food-list').innerHTML = list.map(f=>`
     <div class="food-item">
       <div class="food-thumb">${f.img?`<img src="${f.img}" alt="${f.name}">`:`<span>${f.emoji||'🍽'}</span>`}</div>
       <div class="food-info">
         <div class="food-name">${f.name}</div>
         <div class="food-meta"><span class="chip chip-cat">${f.cat}</span>${f.time}${f.portion?' · '+f.portion:''}</div>
-        <div class="food-meta" style="margin-top:3px">
-          ${(f.questions||[]).filter(q=>q.level==='easy').length?`<span class="chip chip-easy">${(f.questions||[]).filter(q=>q.level==='easy').length} oson</span>`:''}
-          ${(f.questions||[]).filter(q=>q.level==='medium').length?`<span class="chip chip-medium">${(f.questions||[]).filter(q=>q.level==='medium').length} o'rta</span>`:''}
-          ${(f.questions||[]).filter(q=>q.level==='hard').length?`<span class="chip chip-hard">${(f.questions||[]).filter(q=>q.level==='hard').length} qiyin</span>`:''}
+        <div class="food-meta mt1">
+          ${(f.questions||[]).filter(q=>q.level==='easy').length>0?`<span class="chip chip-easy">${(f.questions||[]).filter(q=>q.level==='easy').length} oson</span>`:''}
+          ${(f.questions||[]).filter(q=>q.level==='medium').length>0?`<span class="chip chip-medium">${(f.questions||[]).filter(q=>q.level==='medium').length} o'rta</span>`:''}
+          ${(f.questions||[]).filter(q=>q.level==='hard').length>0?`<span class="chip chip-hard">${(f.questions||[]).filter(q=>q.level==='hard').length} qiyin</span>`:''}
         </div>
       </div>
       <div class="food-price">${Number(f.price).toLocaleString()} so'm</div>
@@ -928,79 +714,406 @@ function renderFoods(){
 }
 function setACat(c){aCat=c;renderFoods();}
 
-function openAddFood(){editFoodId=null;curImg=null;removeImgFlag=false;tempQs=[];document.getElementById('fm-title').textContent="Yangi taom";['f-name','f-price','f-portion','f-time','f-emoji','f-ingr','f-allergy','f-drink','f-phrase'].forEach(id=>document.getElementById(id).value='');document.getElementById('f-cat').value="Sho'rvalar";resetImgUI();renderQModal();document.getElementById('food-modal').classList.remove('hidden');}
-function editFood(id){const f=foods.find(x=>x.id===id);if(!f)return;editFoodId=id;curImg=null;removeImgFlag=false;tempQs=[...(f.questions||[])];document.getElementById('fm-title').textContent='Tahrirlash';document.getElementById('f-name').value=f.name;document.getElementById('f-cat').value=f.cat;document.getElementById('f-price').value=f.price;document.getElementById('f-portion').value=f.portion||'';document.getElementById('f-time').value=f.time||'';document.getElementById('f-emoji').value=f.emoji||'';document.getElementById('f-ingr').value=f.ingredients||'';document.getElementById('f-allergy').value=f.allergens||'';document.getElementById('f-drink').value=f.drinks||'';document.getElementById('f-phrase').value=f.phrase||'';if(f.img){document.getElementById('img-prev').src=f.img;document.getElementById('img-prev').style.display='block';document.getElementById('img-ph').style.display='none';document.getElementById('img-acts').classList.remove('hidden');document.getElementById('img-drop').classList.add('filled');}else resetImgUI();renderQModal();document.getElementById('food-modal').classList.remove('hidden');}
-async function delFood(id){if(!confirm('O\'chirasizmi?'))return;await fetch('/api/foods/'+id,{method:'DELETE'});await loadAdminData();renderFoods();}
-async function saveFood(){const name=document.getElementById('f-name').value.trim();if(!name){alert('Taom nomini kiriting');return;}const fd=new FormData();fd.append('name',name);fd.append('cat',document.getElementById('f-cat').value);fd.append('price',document.getElementById('f-price').value||'0');fd.append('portion',document.getElementById('f-portion').value);fd.append('time',document.getElementById('f-time').value);fd.append('emoji',document.getElementById('f-emoji').value||'🍽');fd.append('ingredients',document.getElementById('f-ingr').value);fd.append('allergens',document.getElementById('f-allergy').value);fd.append('drinks',document.getElementById('f-drink').value);fd.append('phrase',document.getElementById('f-phrase').value);fd.append('questions',JSON.stringify(tempQs));if(curImg)fd.append('img',curImg);if(removeImgFlag)fd.append('removeImg','true');const url=editFoodId?'/api/foods/'+editFoodId:'/api/foods';const method=editFoodId?'PUT':'POST';const r=await fetch(url,{method,body:fd});const d=await r.json();if(d.error){alert('Xato: '+d.error);return;}closeModal('food-modal');await loadAdminData();renderFoods();}
+function openAddFood(){
+  editFoodId=null;curImg=null;removeImgFlag=false;tempQs=[];
+  document.getElementById('fm-title').textContent="Yangi taom qo'shish";
+  ['f-name','f-price','f-portion','f-time','f-emoji','f-ingr','f-allergy','f-drink','f-phrase'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('f-cat').value="Sho'rvalar";
+  resetImgUI();renderQModal();
+  document.getElementById('food-modal').classList.remove('hidden');
+}
+function editFood(id){
+  const f=foods.find(x=>x.id===id);if(!f)return;
+  editFoodId=id;curImg=null;removeImgFlag=false;tempQs=[...(f.questions||[])];
+  document.getElementById('fm-title').textContent='Taomni tahrirlash';
+  document.getElementById('f-name').value=f.name;
+  document.getElementById('f-cat').value=f.cat;
+  document.getElementById('f-price').value=f.price;
+  document.getElementById('f-portion').value=f.portion||'';
+  document.getElementById('f-time').value=f.time||'';
+  document.getElementById('f-emoji').value=f.emoji||'';
+  document.getElementById('f-ingr').value=f.ingredients||'';
+  document.getElementById('f-allergy').value=f.allergens||'';
+  document.getElementById('f-drink').value=f.drinks||'';
+  document.getElementById('f-phrase').value=f.phrase||'';
+  if(f.img){document.getElementById('img-prev').src=f.img;document.getElementById('img-prev').style.display='block';document.getElementById('img-ph').style.display='none';document.getElementById('img-acts').classList.remove('hidden');document.getElementById('img-drop').classList.add('filled');}
+  else resetImgUI();
+  renderQModal();
+  document.getElementById('food-modal').classList.remove('hidden');
+}
+async function delFood(id){
+  if(!confirm('O\'chirasizmi?'))return;
+  await fetch('/api/foods/'+id,{method:'DELETE'});
+  await loadAdminData();renderFoods();
+}
+async function saveFood(){
+  const name=document.getElementById('f-name').value.trim();
+  if(!name){alert('Taom nomini kiriting');return;}
+  const fd=new FormData();
+  fd.append('name',name);fd.append('cat',document.getElementById('f-cat').value);
+  fd.append('price',document.getElementById('f-price').value||'0');
+  fd.append('portion',document.getElementById('f-portion').value);
+  fd.append('time',document.getElementById('f-time').value);
+  fd.append('emoji',document.getElementById('f-emoji').value||'🍽');
+  fd.append('ingredients',document.getElementById('f-ingr').value);
+  fd.append('allergens',document.getElementById('f-allergy').value);
+  fd.append('drinks',document.getElementById('f-drink').value);
+  fd.append('phrase',document.getElementById('f-phrase').value);
+  fd.append('questions',JSON.stringify(tempQs));
+  if(curImg)fd.append('img',curImg);
+  if(removeImgFlag)fd.append('removeImg','true');
+  const url=editFoodId?'/api/foods/'+editFoodId:'/api/foods';
+  const method=editFoodId?'PUT':'POST';
+  const r=await fetch(url,{method,body:fd});
+  const d=await r.json();
+  if(d.error){alert('Xato: '+d.error);return;}
+  closeModal('food-modal');await loadAdminData();renderFoods();
+}
 
+// Img
 function pickImg(){if(!document.getElementById('img-drop').classList.contains('filled'))document.getElementById('img-file').click();}
 function pickImg2(e){e.stopPropagation();document.getElementById('img-file').click();}
 function delImg(e){e.stopPropagation();curImg=null;removeImgFlag=true;resetImgUI();}
 function resetImgUI(){document.getElementById('img-prev').style.display='none';document.getElementById('img-ph').style.display='block';document.getElementById('img-acts').classList.add('hidden');document.getElementById('img-drop').classList.remove('filled');document.getElementById('img-file').value='';}
 function onImg(e){const file=e.target.files[0];if(!file)return;if(file.size>2*1024*1024){alert('2MB dan katta');return;}curImg=file;const rd=new FileReader();rd.onload=ev=>{document.getElementById('img-prev').src=ev.target.result;document.getElementById('img-prev').style.display='block';document.getElementById('img-ph').style.display='none';document.getElementById('img-acts').classList.remove('hidden');document.getElementById('img-drop').classList.add('filled');};rd.readAsDataURL(file);}
-function renderQModal(){document.getElementById('q-list-modal').innerHTML=tempQs.map((q,i)=>`<div class="q-item"><div class="q-num">${i+1}</div><div style="flex:1;font-size:13px">${q.text}</div><span class="chip chip-${q.level}">${q.level==='easy'?'Oson':q.level==='medium'?"O'rta":'Qiyin'}</span><button class="icon-btn del btn-sm" onclick="removeQ(${i})" style="border:none">×</button></div>`).join('');}
+
+// Questions
+function renderQModal(){
+  document.getElementById('q-list-modal').innerHTML=tempQs.map((q,i)=>`
+    <div class="q-item">
+      <div class="q-num">${i+1}</div>
+      <div class="q-text">${q.text}</div>
+      <span class="chip chip-${q.level}">${q.level==='easy'?'Oson':q.level==='medium'?"O'rta":'Qiyin'}</span>
+      <button class="icon-btn del btn-sm" onclick="removeQ(${i})" style="border:none">×</button>
+    </div>`).join('');
+}
 function addQ(){const t=document.getElementById('q-inp').value.trim();if(!t)return;tempQs.push({id:'q'+Date.now(),text:t,level:document.getElementById('q-level').value});document.getElementById('q-inp').value='';renderQModal();}
 function removeQ(i){tempQs.splice(i,1);renderQModal();}
 
+// ══════════════════════════════
 // OFFICERS
-function renderOfficers(){document.getElementById('officers-body').innerHTML=officers.map(o=>`<tr><td style="font-weight:500">${o.name}</td><td style="color:var(--muted)">****</td><td><span class="chip ${o.active?'chip-active':'chip-inactive'}">${o.active?'Faol':'Nofaol'}</span></td><td style="color:var(--muted);font-size:12px">${o.createdAt?o.createdAt.split('T')[0]:'—'}</td><td><div class="flex"><button class="icon-btn" onclick="toggleOfficer('${o.id}',${!o.active})" title="${o.active?'To\'xtat':'Yoqish'}">${o.active?'⏸':'▶'}</button><button class="icon-btn del" onclick="delOfficer('${o.id}')">🗑</button></div></td></tr>`).join('');}
-function openAddOfficer(){editOfficerId=null;document.getElementById('om-title').textContent="Yangi ofitsiant";document.getElementById('o-name').value='';document.getElementById('o-pin').value='';document.getElementById('om-err').classList.add('hidden');document.getElementById('officer-modal').classList.remove('hidden');}
-async function saveOfficer(){const name=document.getElementById('o-name').value.trim();const pin=document.getElementById('o-pin').value.trim();if(!name||!pin||pin.length!==4||!/^\d+$/.test(pin)){showErr('om-err','Ism va 4 raqamli PIN kerak');return;}const r=await fetch('/api/officers',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,pin})});const d=await r.json();if(d.error){showErr('om-err',d.error);return;}closeModal('officer-modal');await loadAdminData();renderOfficers();}
-async function toggleOfficer(id,active){await fetch('/api/officers/'+id,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({active})});await loadAdminData();renderOfficers();}
-async function delOfficer(id){if(!confirm('O\'chirasizmi?'))return;await fetch('/api/officers/'+id,{method:'DELETE'});await loadAdminData();renderOfficers();}
+// ══════════════════════════════
+function renderOfficers(){
+  document.getElementById('officers-body').innerHTML=officers.map(o=>`
+    <tr>
+      <td style="font-weight:500">${o.name}</td>
+      <td>****</td>
+      <td><span class="chip ${o.active?'chip-easy':'chip-hard'}">${o.active?'Faol':'Nofaol'}</span></td>
+      <td style="color:var(--muted)">${o.createdAt?o.createdAt.split('T')[0]:'—'}</td>
+      <td>
+        <div class="flex">
+          <button class="icon-btn" onclick="toggleOfficer('${o.id}',${!o.active})" title="${o.active?'O\'chirish':'Yoqish'}">${o.active?'⏸':'▶'}</button>
+          <button class="icon-btn del" onclick="delOfficer('${o.id}')" title="O'chirish">🗑</button>
+        </div>
+      </td>
+    </tr>`).join('');
+}
+function openAddOfficer(){
+  editOfficerId=null;
+  document.getElementById('om-title').textContent="Yangi ofitsiant qo'shish";
+  document.getElementById('o-name').value='';document.getElementById('o-pin').value='';
+  hideErr('om-err');
+  document.getElementById('officer-modal').classList.remove('hidden');
+}
+async function saveOfficer(){
+  const name=document.getElementById('o-name').value.trim();
+  const pin=document.getElementById('o-pin').value.trim();
+  if(!name||!pin||pin.length!==4||!/^\d+$/.test(pin)){showErr('om-err','Ism va 4 raqamli PIN kerak');return;}
+  const r=await fetch('/api/officers',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,pin})});
+  const d=await r.json();
+  if(d.error){showErr('om-err',d.error);return;}
+  closeModal('officer-modal');await loadAdminData();renderOfficers();
+}
+async function toggleOfficer(id,active){
+  await fetch('/api/officers/'+id,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({active})});
+  await loadAdminData();renderOfficers();
+}
+async function delOfficer(id){
+  if(!confirm('Ofitsiantni o\'chirasizmi?'))return;
+  await fetch('/api/officers/'+id,{method:'DELETE'});
+  await loadAdminData();renderOfficers();
+}
 
+// ══════════════════════════════
 // TEST DAYS
-function renderTestDays(){const now=new Date();calYear=now.getFullYear();calMonth=now.getMonth();renderCal();renderTDList();}
-function renderCal(){const mn=['Yanvar','Fevral','Mart','Aprel','May','Iyun','Iyul','Avgust','Sentabr','Oktabr','Noyabr','Dekabr'];document.getElementById('cal-month').textContent=mn[calMonth]+' '+calYear;const today=new Date().toISOString().split('T')[0];const first=new Date(calYear,calMonth,1).getDay();const dim=new Date(calYear,calMonth+1,0).getDate();let h='';for(let i=0;i<first;i++)h+=`<div class="cal-day" style="visibility:hidden"></div>`;for(let d=1;d<=dim;d++){const ds=`${calYear}-${String(calMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;const it=testDays.includes(ds);const id=ds===today;h+=`<div class="cal-day${it?' test-day':''}${id&&!it?' today':''}" onclick="toggleTD('${ds}')">${d}</div>`;}document.getElementById('cal-grid').innerHTML=h;}
-function renderTDList(){const s=[...testDays].sort();document.getElementById('testdays-list').innerHTML=s.length?s.map(d=>`<div class="flex-between" style="padding:8px 0;border-bottom:1px solid var(--border);font-size:13px"><span>${fmtDate(d)}</span><button class="btn btn-red btn-sm" onclick="removeTD('${d}')">× O'chirish</button></div>`).join(''):'<div style="color:var(--muted);font-size:13px">Hali belgilanmagan</div>';}
-async function toggleTD(date){if(testDays.includes(date)){await removeTD(date);}else{await fetch('/api/testdays',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({date})});await loadAdminData();renderCal();renderTDList();}}
-async function removeTD(date){await fetch('/api/testdays/'+date,{method:'DELETE'});await loadAdminData();renderCal();renderTDList();}
-function fmtDate(d){const[y,m,day]=d.split('-');const mn=['Yan','Fev','Mar','Apr','May','Iyun','Iyul','Avg','Sen','Okt','Noy','Dek'];return`${day} ${mn[parseInt(m)-1]} ${y}`;}
+// ══════════════════════════════
+function renderTestDays(){
+  const now=new Date();
+  calYear=now.getFullYear();calMonth=now.getMonth();
+  renderCal();
+  renderTestDaysList();
+}
+function renderCal(){
+  const monthNames=['Yanvar','Fevral','Mart','Aprel','May','Iyun','Iyul','Avgust','Sentabr','Oktabr','Noyabr','Dekabr'];
+  document.getElementById('cal-month').textContent=monthNames[calMonth]+' '+calYear;
+  const today=new Date().toISOString().split('T')[0];
+  const firstDay=new Date(calYear,calMonth,1).getDay();
+  const daysInMonth=new Date(calYear,calMonth+1,0).getDate();
+  let html='';
+  for(let i=0;i<firstDay;i++) html+=`<div class="cal-day" style="visibility:hidden"></div>`;
+  for(let d=1;d<=daysInMonth;d++){
+    const dateStr=`${calYear}-${String(calMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const isTest=testDays.includes(dateStr);
+    const isToday=dateStr===today;
+    html+=`<div class="cal-day${isTest?' test-day':''}${isToday&&!isTest?' today':''}" onclick="toggleTestDay('${dateStr}')">${d}</div>`;
+  }
+  document.getElementById('cal-grid').innerHTML=html;
+}
+function renderTestDaysList(){
+  const sorted=[...testDays].sort();
+  document.getElementById('testdays-list').innerHTML=sorted.length?sorted.map(d=>`
+    <div class="flex-between" style="padding:8px 0;border-bottom:1px solid var(--border);font-size:13px">
+      <span>${formatDate(d)}</span>
+      <button class="btn btn-red btn-sm" onclick="removeTestDay('${d}')">× O'chirish</button>
+    </div>`).join(''):'<div style="color:var(--muted);font-size:13px">Hali belgilanmagan</div>';
+}
+async function toggleTestDay(date){
+  if(testDays.includes(date)){await removeTestDay(date);}
+  else{await fetch('/api/testdays',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({date})});await loadAdminData();renderCal();renderTestDaysList();}
+}
+async function removeTestDay(date){
+  await fetch('/api/testdays/'+date,{method:'DELETE'});await loadAdminData();renderCal();renderTestDaysList();
+}
+function formatDate(d){const [y,m,day]=d.split('-');const mn=['Yan','Fev','Mar','Apr','May','Iyun','Iyul','Avg','Sen','Okt','Noy','Dek'];return `${day} ${mn[parseInt(m)-1]} ${y}`;}
 
-// ANNOUNCEMENTS
-function renderAnnounce(){document.getElementById('ann-list').innerHTML=announcements.length?announcements.map(a=>`<div class="ann-item ${a.important?'ann-important':'ann-normal'}"><div class="ann-text">${a.text}<div class="ann-date">${a.createdAt?.split('T')[0]||''}</div></div><button class="icon-btn del btn-sm" onclick="delAnn('${a.id}')" style="border:none;flex-shrink:0">×</button></div>`).join(''):'<div style="color:var(--muted);font-size:13px">Hali e\'lon yo\'q</div>';}
-async function sendAnn(){const text=document.getElementById('ann-text').value.trim();if(!text){alert('Matn kiriting');return;}const important=document.getElementById('ann-important').checked;await fetch('/api/announcements',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text,important})});document.getElementById('ann-text').value='';document.getElementById('ann-important').checked=false;await loadAdminData();renderAnnounce();}
-async function delAnn(id){await fetch('/api/announcements/'+id,{method:'DELETE'});await loadAdminData();renderAnnounce();}
+// ══════════════════════════════
+// RESULTS (ADMIN)
+// ══════════════════════════════
+function renderResults(){
+  const filter=document.getElementById('result-filter')?.value||'';
+  const sel=document.getElementById('result-filter');
+  if(sel){
+    const names=[...new Set(results.map(r=>r.officerName))];
+    const cur=sel.value;
+    sel.innerHTML='<option value="">Barcha ofitsiantlar</option>'+names.map(n=>`<option value="${n}"${n===cur?' selected':''}>${n}</option>`).join('');
+  }
+  const filtered=filter?results.filter(r=>r.officerName===filter):results;
+  const sorted=[...filtered].sort((a,b)=>new Date(b.createdAt)-new Date(a.createdAt));
+  document.getElementById('results-body').innerHTML=sorted.map(r=>`
+    <tr>
+      <td style="font-weight:500">${r.officerName}</td>
+      <td><span style="font-weight:700;color:var(--gold)">${r.pct}%</span> <span style="color:var(--muted);font-size:12px">(${r.score}/${r.total})</span></td>
+      <td><span class="chip chip-easy">${r.details?.filter(d=>d.level==='easy'&&d.correct).length||0}</span></td>
+      <td><span class="chip chip-medium">${r.details?.filter(d=>d.level==='medium'&&d.correct).length||0}</span></td>
+      <td><span class="chip chip-hard">${r.details?.filter(d=>d.level==='hard'&&d.correct).length||0}</span></td>
+      <td style="color:var(--muted)">${r.duration?Math.round(r.duration/60)+" daq":'—'}</td>
+      <td style="color:var(--muted)">${r.date}</td>
+    </tr>`).join('');
+}
 
-// RESULTS
-function renderResults(){const filter=document.getElementById('result-filter')?.value||'';const sel=document.getElementById('result-filter');if(sel){const names=[...new Set(results.map(r=>r.officerName))];const cur=sel.value;sel.innerHTML='<option value="">Barcha ofitsiantlar</option>'+names.map(n=>`<option value="${n}"${n===cur?' selected':''}>${n}</option>`).join('');}const filtered=filter?results.filter(r=>r.officerName===filter):results;const sorted=[...filtered].sort((a,b)=>new Date(b.createdAt)-new Date(a.createdAt));document.getElementById('results-body').innerHTML=sorted.map(r=>`<tr><td style="font-weight:500">${r.officerName}</td><td><span style="font-weight:700;color:var(--gold)">${r.pct}%</span> <span style="color:var(--muted);font-size:11px">(${r.score}/${r.total})</span></td><td><span class="chip chip-easy">${r.details?.filter(d=>d.level==='easy'&&d.correct).length||0}</span></td><td><span class="chip chip-medium">${r.details?.filter(d=>d.level==='medium'&&d.correct).length||0}</span></td><td><span class="chip chip-hard">${r.details?.filter(d=>d.level==='hard'&&d.correct).length||0}</span></td><td style="color:var(--muted)">${r.duration?Math.round(r.duration/60)+' daq':'—'}</td><td style="color:var(--muted)">${r.date}</td></tr>`).join('');}
+// ══════════════════════════════
+// OFFICER: LEARN
+// ══════════════════════════════
+async function checkTestDay(){
+  const r=await fetch('/api/testdays/today');
+  const d=await r.json();
+  const banner=document.getElementById('test-day-banner');
+  const content=document.getElementById('learn-content');
+  if(d.isTestDay){banner.classList.remove('hidden');content.classList.add('hidden');}
+  else{banner.classList.add('hidden');content.classList.remove('hidden');}
+  const fr=await fetch('/api/foods');
+  const fd=await fr.json();
+  foods=fd.foods||[];
+  updateQBadge();
+}
 
-// ══════════════════════════
-// OFFICER DATA
-// ══════════════════════════
-async function loadOfficerData(){const r=await fetch('/api/foods');const d=await r.json();foods=d.foods||[];updateQBadge();const an=await fetch('/api/announcements');announcements=await an.json();}
-
-async function checkTestDay(){const r=await fetch('/api/testdays/today');const d=await r.json();document.getElementById('test-day-banner').classList.toggle('hidden',!d.isTestDay);document.getElementById('learn-content').classList.toggle('hidden',d.isTestDay);}
-
-async function renderLearn(){await loadOfficerData();await checkTestDay();if(document.getElementById('learn-content').classList.contains('hidden'))return;
-  // E'lonlar
-  document.getElementById('ann-banner').innerHTML=announcements.length?announcements.slice(0,2).map(a=>`<div class="ann-item ${a.important?'ann-important':'ann-normal'}" style="margin-bottom:8px"><div class="ann-text">${a.text}</div></div>`).join(''):'';
-  const cats=['Barchasi',...new Set(foods.map(f=>f.cat))];
-  document.getElementById('l-cats').innerHTML=cats.map(c=>`<button class="cat-btn${c===lCat?' active':''}" onclick="setLCat('${c}',event)">${c}</button>`).join('');
-  renderMenuGrid();document.getElementById('learn-grid').classList.remove('hidden');document.getElementById('learn-detail').classList.add('hidden');}
+async function renderLearn(){
+  await checkTestDay();
+  if(document.getElementById('learn-content').classList.contains('hidden'))return;
+  const allCats=['Barchasi',...new Set(foods.map(f=>f.cat))];
+  document.getElementById('l-cats').innerHTML=allCats.map(c=>`<button class="cat-btn${c===lCat?' active':''}" onclick="setLCat('${c}',event)">${c}</button>`).join('');
+  renderMenuGrid();
+  document.getElementById('learn-grid').classList.remove('hidden');
+  document.getElementById('learn-detail').classList.add('hidden');
+}
 function setLCat(c,e){lCat=c;document.querySelectorAll('#l-cats .cat-btn').forEach(b=>b.classList.remove('active'));e.target.classList.add('active');renderMenuGrid();}
-function renderMenuGrid(){const filtered=lCat==='Barchasi'?foods:foods.filter(f=>f.cat===lCat);document.getElementById('learn-grid').innerHTML=`<div class="menu-grid">${filtered.map(f=>`<div class="mc" onclick="showDetail('${f.id}')"><div class="mc-img">${f.img?`<img src="${f.img}" alt="${f.name}">`:`<span>${f.emoji||'🍽'}</span>`}</div><div class="mc-body"><div class="mc-name">${f.name}</div><div class="mc-price">${Number(f.price).toLocaleString()} so'm</div><div class="mc-time">⏱ ${f.time}</div></div></div>`).join('')}</div>`;}
-function showDetail(id){const f=foods.find(x=>x.id===id);if(!f)return;document.getElementById('learn-grid').classList.add('hidden');const dp=document.getElementById('learn-detail');dp.innerHTML=`<button class="btn btn-outline" style="margin-bottom:12px" onclick="backGrid()">← Orqaga</button><div class="card"><div class="card-body"><div class="detail-img">${f.img?`<img src="${f.img}" alt="${f.name}">`:`<span>${f.emoji||'🍽'}</span>`}</div><div style="font-size:20px;font-weight:700;margin-bottom:4px">${f.name}</div><div style="font-size:16px;color:var(--gold);font-weight:700;margin-bottom:1rem">${Number(f.price).toLocaleString()} so'm</div><div class="info-row"><span class="ik">📋 Tarkibi</span><span>${f.ingredients||'—'}</span></div><div class="info-row"><span class="ik">⚠ Allergenlar</span><span>${f.allergens||"Yo'q"}</span></div><div class="info-row"><span class="ik">⏱ Vaqt</span><span>${f.time||'—'}</span></div><div class="info-row"><span class="ik">⚖ Porsiya</span><span>${f.portion||'—'}</span></div><div class="info-row"><span class="ik">🍵 Ichimlik</span><span>${f.drinks||'—'}</span></div>${f.phrase?`<div class="phrase-box">💬 "${f.phrase}"</div>`:''}</div></div>`;dp.classList.remove('hidden');}
+function renderMenuGrid(){
+  const filtered=lCat==='Barchasi'?foods:foods.filter(f=>f.cat===lCat);
+  document.getElementById('learn-grid').innerHTML=`<div class="menu-grid">${filtered.map(f=>`
+    <div class="mc" onclick="showDetail('${f.id}')">
+      <div class="mc-img">${f.img?`<img src="${f.img}" alt="${f.name}">`:`<span>${f.emoji||'🍽'}</span>`}</div>
+      <div class="mc-body">
+        <div class="mc-name">${f.name}</div>
+        <div class="mc-price">${Number(f.price).toLocaleString()} so'm</div>
+        <div class="mc-time">⏱ ${f.time}</div>
+      </div>
+    </div>`).join('')}</div>`;
+}
+function showDetail(id){
+  const f=foods.find(x=>x.id===id);if(!f)return;
+  document.getElementById('learn-grid').classList.add('hidden');
+  const dp=document.getElementById('learn-detail');
+  dp.innerHTML=`
+    <button class="btn btn-outline" style="margin-bottom:12px" onclick="backGrid()">← Orqaga</button>
+    <div class="card"><div class="card-body">
+      <div class="detail-img">${f.img?`<img src="${f.img}" alt="${f.name}">`:`<span>${f.emoji||'🍽'}</span>`}</div>
+      <div style="font-size:20px;font-weight:700;margin-bottom:4px">${f.name}</div>
+      <div style="font-size:16px;color:var(--gold);font-weight:700;margin-bottom:1rem">${Number(f.price).toLocaleString()} so'm</div>
+      <div class="info-row"><span class="ik">📋 Tarkibi</span><span>${f.ingredients||'—'}</span></div>
+      <div class="info-row"><span class="ik">⚠ Allergenlar</span><span>${f.allergens||"Yo'q"}</span></div>
+      <div class="info-row"><span class="ik">⏱ Vaqt</span><span>${f.time||'—'}</span></div>
+      <div class="info-row"><span class="ik">⚖ Porsiya</span><span>${f.portion||'—'}</span></div>
+      <div class="info-row"><span class="ik">🍵 Ichimlik</span><span>${f.drinks||'—'}</span></div>
+      ${f.phrase?`<div class="phrase-box">💬 "${f.phrase}"</div>`:''}
+    </div></div>`;
+  dp.classList.remove('hidden');
+}
 function backGrid(){document.getElementById('learn-grid').classList.remove('hidden');document.getElementById('learn-detail').classList.add('hidden');}
 
+// ══════════════════════════════
 // TEST
-async function startTest(){const r=await fetch('/api/test/questions');const d=await r.json();if(!d.questions||d.questions.length===0){alert("Savollar yo'q!");return;}testQs=d.questions;tIdx=0;tScore=0;easyScore=0;medScore=0;hardScore=0;testDetails=[];testStartTime=Date.now();document.getElementById('t-start').classList.add('hidden');document.getElementById('t-result').classList.add('hidden');document.getElementById('t-active').classList.remove('hidden');showQ();}
-function showQ(){if(tIdx>=testQs.length){showResult();return;}const q=testQs[tIdx];document.getElementById('tpb').style.width=Math.round((tIdx/testQs.length)*100)+'%';document.getElementById('t-counter').textContent=(tIdx+1)+'/'+testQs.length;document.getElementById('t-level').innerHTML=`<span class="chip chip-${q.level}">${q.level==='easy'?'Oson':q.level==='medium'?"O'rta":'Qiyin'}</span>`;document.getElementById('t-q').textContent=q.question;document.getElementById('t-opts').innerHTML=q.options.map(o=>`<button class="test-opt" onclick="answer(this,'${o.replace(/'/g,"\\'")}','${q.correct.replace(/'/g,"\\'")}','${q.level}')">${o}</button>`).join('');startTimer();}
-function startTimer(){clearInterval(timerInt);timeLeft=30;document.getElementById('t-timer').textContent='⏱ '+timeLeft;timerInt=setInterval(()=>{timeLeft--;document.getElementById('t-timer').textContent='⏱ '+timeLeft;if(timeLeft<=0){clearInterval(timerInt);timeExpired();}},1000);}
-function timeExpired(){const q=testQs[tIdx];document.querySelectorAll('.test-opt').forEach(b=>{b.disabled=true;if(b.textContent.trim()===q.correct)b.classList.add('correct');});testDetails.push({level:q.level,correct:false,timeout:true});setTimeout(()=>{tIdx++;showQ();},800);}
-function answer(btn,ans,correct,level){clearInterval(timerInt);document.querySelectorAll('.test-opt').forEach(b=>b.disabled=true);const ok=ans===correct;if(ok){btn.classList.add('correct');tScore++;if(level==='easy')easyScore++;else if(level==='medium')medScore++;else hardScore++;}else{btn.classList.add('wrong');document.querySelectorAll('.test-opt').forEach(b=>{if(b.textContent.trim()===correct)b.classList.add('correct');});}testDetails.push({level,correct:ok,question:testQs[tIdx].question,foodName:testQs[tIdx].foodName});setTimeout(()=>{tIdx++;showQ();},800);}
-async function showResult(){clearInterval(timerInt);document.getElementById('t-active').classList.add('hidden');const pct=Math.round((tScore/testQs.length)*100);const dur=Math.round((Date.now()-testStartTime)/1000);let rank,rbg,rc;if(pct>=90){rank='🥇 Menyu Eksperti';rbg='#FFF3CD';rc='#856404';}else if(pct>=70){rank='🥈 Senior Ofitsiant';rbg='#F1F1F1';rc='#555';}else{rank='🥉 Junior Ofitsiant';rbg='#FDEBD0';rc='#7D4A0F';}const eT=testQs.filter(q=>q.level==='easy').length;const mT=testQs.filter(q=>q.level==='medium').length;const hT=testQs.filter(q=>q.level==='hard').length;const wrong=testDetails.filter(d=>!d.correct);document.getElementById('t-result').innerHTML=`<div class="result-card"><div class="result-score">${tScore}/${testQs.length}</div><div style="font-size:14px;color:var(--muted)">${pct}% to'g'ri</div><div style="font-size:26px;margin:8px 0">${pct>=90?'★★★':pct>=70?'★★☆':'★☆☆'}</div><div class="result-rank" style="background:${rbg};color:${rc}">${rank}</div><div class="result-breakdown"><div class="rb-item" style="background:#e8f8f0;color:#1a6b40"><div class="rb-num">${easyScore}/${eT}</div><div class="rb-label">Oson</div></div><div class="rb-item" style="background:#fef9e7;color:#b7770d"><div class="rb-num">${medScore}/${mT}</div><div class="rb-label">O'rta</div></div><div class="rb-item" style="background:#fef0f0;color:var(--red)"><div class="rb-num">${hardScore}/${hT}</div><div class="rb-label">Qiyin</div></div></div>${wrong.length?`<div style="text-align:left;background:var(--bg);border-radius:10px;padding:12px;margin:1rem 0"><div style="font-size:12px;font-weight:700;color:var(--red);margin-bottom:6px">❌ Noto'g'ri (${wrong.length} ta):</div>${wrong.slice(0,4).map(d=>`<div style="font-size:12px;color:var(--muted);padding:2px 0">• ${d.question||''}</div>`).join('')}</div>``:''}${pct>=90?`<div class="cert"><div class="cert-title">Sertifikat</div><div class="cert-name">${currentUser.name}</div><div style="font-size:12px;color:#aaa;margin:4px 0">muvaffaqiyatli topshirdi</div><div class="cert-rank">Menyu Eksperti ⭐</div><div style="font-size:11px;color:#888">${new Date().toLocaleDateString('uz-UZ')}</div></div>`:''}<div style="margin-top:1.5rem;display:flex;gap:8px;justify-content:center;flex-wrap:wrap"><button class="btn btn-gold" onclick="startTest()">↺ Qaytadan</button><button class="btn btn-outline" onclick="gt('o-rank')">🏆 Reyting</button><button class="btn btn-outline" onclick="gt('o-history')">📋 Tarixim</button></div></div>`;document.getElementById('t-result').classList.remove('hidden');await fetch('/api/results',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({score:tScore,total:testQs.length,pct,details:testDetails,duration:dur})});}
+// ══════════════════════════════
+let testStartTime, testDetails=[];
 
-async function renderRank(){const r=await fetch('/api/leaderboard');const lb=await r.json();const rC=['lb-1','lb-2','lb-3'];document.getElementById('lb-list').innerHTML=lb.length?lb.map((p,i)=>`<div class="lb-item"><div class="lb-rank ${rC[i]||'lb-n'}">${i+1}</div><div style="flex:1"><div style="font-size:13px;font-weight:600">${p.name}</div><div class="lb-bar"><div class="lb-fill" style="width:${p.pct}%"></div></div></div><div style="text-align:right"><div style="font-size:14px;font-weight:700;color:var(--gold)">${p.pct}%</div><div style="font-size:11px;color:var(--muted)">${p.tests} test</div></div></div>`).join(''):'<div style="color:var(--muted);font-size:13px;text-align:center;padding:2rem">Hali natija yo\'q</div>';}
+async function startTest(){
+  const r=await fetch('/api/test/questions');
+  const d=await r.json();
+  if(!d.questions||d.questions.length===0){alert("Savollar yo'q! Admin menyu va savollar qo'shsin.");return;}
+  testQs=d.questions;tIdx=0;tScore=0;easyScore=0;medScore=0;hardScore=0;testDetails=[];
+  testStartTime=Date.now();
+  document.getElementById('t-start').classList.add('hidden');
+  document.getElementById('t-result').classList.add('hidden');
+  document.getElementById('t-active').classList.remove('hidden');
+  showQ();
+}
 
-async function renderHistory(){const r=await fetch('/api/results/my');const my=await r.json();const sorted=[...my].sort((a,b)=>new Date(b.createdAt)-new Date(a.createdAt));document.getElementById('history-list').innerHTML=sorted.length?sorted.map(r=>`<div style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)"><div style="font-size:16px;font-weight:700;color:var(--gold);min-width:48px">${r.pct}%</div><div style="flex:1"><div style="font-size:13px;font-weight:500">${r.score}/${r.total} to'g'ri</div><div style="font-size:11px;color:var(--muted)">${r.date}${r.duration?' · '+Math.round(r.duration/60)+' daqiqa':''}</div></div><span class="chip ${r.pct>=90?'chip-easy':r.pct>=70?'chip-medium':'chip-hard'}">${r.pct>=90?'Ekspert':r.pct>=70?'Senior':'Junior'}</span></div>`).join(''):'<div style="color:var(--muted);font-size:13px;text-align:center;padding:1.5rem">Hali test topshirilmagan</div>';}
+function showQ(){
+  if(tIdx>=testQs.length){showResult();return;}
+  const q=testQs[tIdx];
+  const pct=Math.round((tIdx/testQs.length)*100);
+  document.getElementById('tpb').style.width=pct+'%';
+  document.getElementById('t-counter').textContent=(tIdx+1)+' / '+testQs.length;
+  const lvlLabel=q.level==='easy'?'Oson':q.level==='medium'?"O'rta":'Qiyin';
+  document.getElementById('t-level-chip').innerHTML=`<span class="chip chip-${q.level}">${lvlLabel}</span>`;
+  document.getElementById('t-q').textContent=q.question;
+  document.getElementById('t-opts').innerHTML=q.options.map(o=>`<button class="test-opt" onclick="answer(this,'${o.replace(/'/g,"\\'")}','${q.correct.replace(/'/g,"\\'")}','${q.level}')">${o}</button>`).join('');
+  startTimer();
+}
 
-// ══════════════════════════
-// UTILS
-// ══════════════════════════
+function startTimer(){
+  clearInterval(timerInt);timeLeft=30;
+  document.getElementById('t-timer').textContent='⏱ '+timeLeft;
+  timerInt=setInterval(()=>{
+    timeLeft--;
+    document.getElementById('t-timer').textContent='⏱ '+timeLeft;
+    if(timeLeft<=0){
+      clearInterval(timerInt);
+      timeExpired();
+    }
+  },1000);
+}
+
+function timeExpired(){
+  const q=testQs[tIdx];
+  document.querySelectorAll('.test-opt').forEach(b=>{b.disabled=true;if(b.textContent.trim()===q.correct)b.classList.add('correct');});
+  testDetails.push({level:q.level,correct:false,timeout:true});
+  setTimeout(()=>{tIdx++;showQ();},800);
+}
+
+function answer(btn,ans,correct,level){
+  clearInterval(timerInt);
+  document.querySelectorAll('.test-opt').forEach(b=>b.disabled=true);
+  const isCorrect=ans===correct;
+  if(isCorrect){
+    btn.classList.add('correct');tScore++;
+    if(level==='easy')easyScore++;
+    else if(level==='medium')medScore++;
+    else hardScore++;
+  } else {
+    btn.classList.add('wrong');
+    document.querySelectorAll('.test-opt').forEach(b=>{if(b.textContent.trim()===correct)b.classList.add('correct');});
+  }
+  testDetails.push({level,correct:isCorrect,question:testQs[tIdx].question,foodName:testQs[tIdx].foodName});
+  setTimeout(()=>{tIdx++;showQ();},800);
+}
+
+async function showResult(){
+  clearInterval(timerInt);
+  document.getElementById('t-active').classList.add('hidden');
+  const pct=Math.round((tScore/testQs.length)*100);
+  const duration=Math.round((Date.now()-testStartTime)/1000);
+  let rank,rbg,rc;
+  if(pct>=90){rank='🥇 Menyu Eksperti';rbg='#FFF3CD';rc='#856404';}
+  else if(pct>=70){rank='🥈 Senior Ofitsiant';rbg='#F1F1F1';rc='#555';}
+  else{rank='🥉 Junior Ofitsiant';rbg='#FDEBD0';rc='#7D4A0F';}
+  const stars=pct>=90?'★★★':pct>=70?'★★☆':'★☆☆';
+  const easyTotal=testQs.filter(q=>q.level==='easy').length;
+  const medTotal=testQs.filter(q=>q.level==='medium').length;
+  const hardTotal=testQs.filter(q=>q.level==='hard').length;
+
+  const wrongList=testDetails.filter(d=>!d.correct);
+
+  document.getElementById('t-result').innerHTML=`
+    <div class="result-card">
+      <div class="result-score">${tScore}/${testQs.length}</div>
+      <div class="result-label">${pct}% to'g'ri javob</div>
+      <div class="result-stars">${stars}</div>
+      <div class="result-rank" style="background:${rbg};color:${rc}">${rank}</div>
+      <div class="result-breakdown">
+        <div class="rb-item rb-easy"><div class="rb-num">${easyScore}/${easyTotal}</div><div class="rb-label">Oson</div></div>
+        <div class="rb-item rb-medium"><div class="rb-num">${medScore}/${medTotal}</div><div class="rb-label">O'rta</div></div>
+        <div class="rb-item rb-hard"><div class="rb-num">${hardScore}/${hardTotal}</div><div class="rb-label">Qiyin</div></div>
+      </div>
+      ${wrongList.length>0?`
+      <div style="text-align:left;background:var(--bg);border-radius:10px;padding:12px;margin:1rem 0">
+        <div style="font-size:12px;font-weight:700;color:var(--red);margin-bottom:8px">❌ Noto'g'ri javoblar (${wrongList.length} ta):</div>
+        ${wrongList.slice(0,5).map(d=>`<div style="font-size:12px;color:var(--muted);padding:3px 0">• ${d.question||''} <span style="color:var(--text)">(${d.foodName||''})</span></div>`).join('')}
+      </div>`:''}
+      ${pct>=90?`<div class="cert"><div class="cert-title">Sertifikat</div><div class="cert-name">${currentUser.name}</div><div class="cert-sub">muvaffaqiyatli testni topshirdi</div><div class="cert-rank">Menyu Eksperti</div><div style="font-size:11px;color:#aaa">${new Date().toLocaleDateString('uz-UZ')}</div></div>`:''}
+      <div style="margin-top:1.5rem;display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
+        <button class="btn btn-gold" onclick="startTest()">↺ Qaytadan</button>
+        <button class="btn btn-outline" onclick="gotoTab('rank')">🏆 Reyting</button>
+        <button class="btn btn-outline" onclick="gotoTab('history')">📋 Tarixim</button>
+      </div>
+    </div>`;
+  document.getElementById('t-result').classList.remove('hidden');
+
+  await fetch('/api/results',{
+    method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({score:tScore,total:testQs.length,pct,details:testDetails,duration})
+  });
+}
+
+// ══════════════════════════════
+// RANK
+// ══════════════════════════════
+async function renderRank(){
+  const r=await fetch('/api/leaderboard');
+  const lb=await r.json();
+  const rC=['lb-1','lb-2','lb-3'];
+  document.getElementById('lb-list').innerHTML=lb.length?lb.map((p,i)=>`
+    <div class="lb-item">
+      <div class="lb-rank ${rC[i]||'lb-n'}">${i+1}</div>
+      <div style="flex:1"><div class="lb-name">${p.name}</div><div class="lb-bar"><div class="lb-fill" style="width:${p.pct}%"></div></div></div>
+      <div style="text-align:right"><div class="lb-pct">${p.pct}%</div><div style="font-size:11px;color:var(--muted)">${p.tests} test</div></div>
+    </div>`).join(''):'<div style="color:var(--muted);font-size:13px;text-align:center;padding:2rem">Hali natija yo\'q</div>';
+}
+
+// ══════════════════════════════
+// HISTORY
+// ══════════════════════════════
+async function renderHistory(){
+  const r=await fetch('/api/results/my');
+  const my=await r.json();
+  const sorted=[...my].sort((a,b)=>new Date(b.createdAt)-new Date(a.createdAt));
+  document.getElementById('history-list').innerHTML=sorted.length?sorted.map(r=>`
+    <div class="hist-item">
+      <div class="hist-pct">${r.pct}%</div>
+      <div class="hist-info">
+        <div style="font-size:13px;font-weight:500">${r.score}/${r.total} to'g'ri</div>
+        <div class="hist-date">${r.date} · ${r.duration?Math.round(r.duration/60)+' daqiqa':'—'}</div>
+      </div>
+      <span class="chip ${r.pct>=90?'chip-easy':r.pct>=70?'chip-medium':'chip-hard'}">${r.pct>=90?'Ekspert':r.pct>=70?'Senior':'Junior'}</span>
+    </div>`).join(''):'<div style="color:var(--muted);font-size:13px;text-align:center;padding:1.5rem">Hali test topshirilmagan</div>';
+}
+
+// ══════════════════════════════
+// MODAL UTILS
+// ══════════════════════════════
 function closeModal(id){document.getElementById(id).classList.add('hidden');}
 function bgClose(e,id){if(e.target===document.getElementById(id))closeModal(id);}
 
+// INIT
 init();
 </script>
 </body>
