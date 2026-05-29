@@ -7,3 +7,7 @@ services:
     envVars:
       - key: PORT
         value: 3000
+      - key: JWT_SECRET
+        value: tarnov-jwt-secret-2024
+      - key: ADMIN_PASSWORD
+        value: tarnov2024

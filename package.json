@@ -1,15 +1,17 @@
 {
-  "name": "tarnov-menu-training",
-  "version": "1.0.0",
-  "description": "Tarnov Oilaviy Restoran - Menyu o'qitish tizimi",
+  "name": "tarnov-menu-v2",
+  "version": "2.0.0",
+  "description": "Tarnov Oilaviy Restoran - Menyu o'qitish tizimi v2.0",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js"
+    "start": "node server.js"
   },
   "dependencies": {
     "express": "^4.18.2",
     "multer": "^1.4.5-lts.1",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "cookie-parser": "^1.4.6"
   }
 }
